@@ -4,13 +4,13 @@ import java.util.Map;
 
 public class TrainAvailabilityModel {
 	
-	private Map<TrainModel,Integer> trainAvailability;
+	private Map<Integer,Integer> trainAvailability;
 
-	public Map<TrainModel, Integer> getTrainAvailability() {
+	public Map<Integer, Integer> getTrainAvailability() {
 		return trainAvailability;
 	}
 
-	public void setTrainAvailability(Map<TrainModel, Integer> trainAvailability) {
+	public void setTrainAvailability(Map<Integer, Integer> trainAvailability) {
 		this.trainAvailability = trainAvailability;
 	}
 

@@ -7,14 +7,11 @@ public class RouteModel {
 	
 	private ItineraryModel schedule;
 	
-	private TrainModel train;
-	
 	private int availability;
 
-	public RouteModel(ItineraryModel schedule, TrainModel train, int availability) {
+	public RouteModel(ItineraryModel schedule, int availability) {
 		super();
 		this.schedule = schedule;
-		this.train = train;
 		this.availability = availability;
 	}
 
@@ -24,14 +21,6 @@ public class RouteModel {
 
 	public void setSchedule(ItineraryModel schedule) {
 		this.schedule = schedule;
-	}
-
-	public TrainModel getTrain() {
-		return train;
-	}
-
-	public void setTrain(TrainModel train) {
-		this.train = train;
 	}
 
 	public int getAvailability() {

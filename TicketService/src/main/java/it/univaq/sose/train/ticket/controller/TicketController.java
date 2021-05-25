@@ -25,9 +25,9 @@ public class TicketController {
 		
 	}*/
 	
-	public static Map<TrainModel,Integer> getAvailability(String from, String to, String time) {
+	public static Map<Integer,Integer> getAvailability(String from, String to, String time) {
 		
-		Map<TrainModel,Integer> trainsAvailability = new HashMap<>();
+		Map<Integer,Integer> trainsAvailability = new HashMap<>();
 		List<ItineraryModel> itineraries = ItineraryDAO.getItineraries(from, to, time);
 		
 		Iterator<ItineraryModel> iterator = itineraries.iterator();
@@ -37,7 +37,7 @@ public class TicketController {
 			TrainModel train = itinerary.getTrain();
 			int booked = TicketDAO.getBookingByItineraryId(itinerary.getItineraryId());
 			int availability = train.getCapacity()-booked;
-			trainsAvailability.put(train, availability);
+			trainsAvailability.put(train.getTrainId(), availability);
 		}
 
 		return trainsAvailability;

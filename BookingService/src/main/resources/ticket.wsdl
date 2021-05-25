@@ -55,7 +55,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element minOccurs="0" name="key" type="tns:trainModel"/>
+                  <xs:element minOccurs="0" name="key" type="xs:int"/>
                   <xs:element minOccurs="0" name="value" type="xs:int"/>
                 </xs:sequence>
               </xs:complexType>

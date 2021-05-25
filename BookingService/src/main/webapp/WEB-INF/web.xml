@@ -5,7 +5,7 @@
   <servlet>
   	<display-name>SimpleCXFNonSpringServlet</display-name>
   	<servlet-name>SimpleCXFNonSpringServlet</servlet-name>
-  	<servlet-class>it.univaq.sose.train.booking.SimpleCXFNonSpringServlet</servlet-class>
+  	<servlet-class>it.univaq.sose.train.booking.service.SimpleCXFNonSpringServlet</servlet-class>
   </servlet>
    
   <servlet-mapping>

@@ -1,9 +1,11 @@
 package it.univaq.sose.train.booking.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 import it.univaq.sose.train.booking.model.RouteModel;
 import it.univaq.sose.train.booking.service.TrainAvailabilityAsyncHandler;
@@ -57,13 +59,17 @@ public class RouteController {
 		
 		List<RouteModel> routes = new ArrayList<>();
 		
-		while (itineraries.iterator().hasNext()) {
-			ItineraryModel itinerary = itineraries.iterator().next();
+		itineraries.forEach( itinerary -> {
+			
 			TrainModel train = itinerary.getTrain();
 			
-			int index = availabilities.getTrainAvailability().getEntry().indexOf(train);
-			int availability = availabilities.getTrainAvailability().getEntry().get(index).getValue();
-		}
+			Map<Integer,Integer> availabilitiesMap = availabilities.getTrainAvailability().getEntry().stream()
+					.collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue(), (a,b) -> a, () -> new LinkedHashMap<>()));
+			
+			int availability = availabilitiesMap.get(train.getTrainId());
+			System.out.println(availability);
+			routes.add(new RouteModel(itinerary, availability));
+		});
 		
 		return routes;
 	}
