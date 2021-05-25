@@ -22,6 +22,7 @@ public class RouteController {
 	
 	public static List<ItineraryModel> getItineraries (String from, String to, String time) {
 		
+		System.out.println("getItineraries");
 		ScheduleImplService service = new ScheduleImplService();
 		Schedule port = service.getScheduleImplPort();
 		List<ItineraryModel> response = port.getSchedule(from, to, time);
@@ -29,7 +30,7 @@ public class RouteController {
 		
 	}
 	
-	public static TrainAvailabilityModel getAvailabilities (String from, String to, String time) throws InterruptedException {
+	/*public static TrainAvailabilityModel getAvailabilities (String from, String to, String time) throws InterruptedException {
 		
 		TicketImplService service = new TicketImplService();
 		Ticket port = service.getTicketImplPort();
@@ -47,15 +48,35 @@ public class RouteController {
 		}
 		
 		TrainAvailabilityModel availabilities = trainAvailabilitySyncHandler.getResponse();
-		
+		System.out.println(availabilities.getTrainAvailability().getEntry().isEmpty());
 		return availabilities;
 		
-	}
+	}*/
 	
 	public static List<RouteModel> getRoutes(String from, String to, String time) throws InterruptedException {
 		
-		List<ItineraryModel> itineraries = getItineraries(from, to, time);
-		TrainAvailabilityModel availabilities = getAvailabilities(from, to, time);
+		List<ItineraryModel> itineraries = new ArrayList<>();
+		
+		TicketImplService service = new TicketImplService();
+		Ticket port = service.getTicketImplPort();
+		
+		GetAvailability request = new GetAvailability();
+		request.setArg0(from);
+		request.setArg1(to);
+		request.setArg2(time);
+		
+		TrainAvailabilityAsyncHandler trainAvailabilitySyncHandler = new TrainAvailabilityAsyncHandler();
+		Future<?> response = port.getAvailabilityAsync(request, trainAvailabilitySyncHandler);
+		
+		do {
+			if(itineraries.isEmpty()) itineraries = getItineraries(from, to, time);
+		} while (!response.isDone());
+		
+		TrainAvailabilityModel availabilities = trainAvailabilitySyncHandler.getResponse();
+		System.out.println(availabilities.getTrainAvailability().getEntry().isEmpty());
+
+		//TrainAvailabilityModel availabilities = getAvailabilities(from, to, time);
+		//List<ItineraryModel> itineraries = getItineraries(from, to, time);
 		
 		List<RouteModel> routes = new ArrayList<>();
 		
