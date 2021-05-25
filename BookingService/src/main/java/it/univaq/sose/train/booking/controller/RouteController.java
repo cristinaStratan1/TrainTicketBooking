@@ -67,7 +67,6 @@ public class RouteController {
 					.collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue(), (a,b) -> a, () -> new LinkedHashMap<>()));
 			
 			int availability = availabilitiesMap.get(train.getTrainId());
-			System.out.println(availability);
 			routes.add(new RouteModel(itinerary, availability));
 		});
 		
