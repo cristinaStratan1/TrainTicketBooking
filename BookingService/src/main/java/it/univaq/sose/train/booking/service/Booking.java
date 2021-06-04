@@ -15,5 +15,8 @@ public interface Booking {
 	
 	@WebMethod
 	boolean setBooking (int userId, int ticketId, String seat, String status);
+	
+	@WebMethod
+	List<BookingModel> getUserBooking(int userId);
 
 }

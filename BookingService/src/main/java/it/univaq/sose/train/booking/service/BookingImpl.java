@@ -15,7 +15,7 @@ public class BookingImpl implements Booking {
 		List<RouteModel> routes = new ArrayList<>();
 		
 		try {
-			routes=RouteController.getRoutes(from, to, time);
+			routes = RouteController.getRoutes(from, to, time);
 			return routes;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -29,6 +29,13 @@ public class BookingImpl implements Booking {
 	public boolean setBooking(int userId, int ticketId, String seat, String status) {
 		BookingDAO.setBooking(userId, ticketId, seat, status);
 		return true;
+	}
+	
+	@Override
+	public List<BookingModel> getUserBooking(int userId){
+		 List<BookingModel> userTickets = BookingDAO.getUserBooking(userid);
+		 return userTickets;
+		
 	}
 
 }

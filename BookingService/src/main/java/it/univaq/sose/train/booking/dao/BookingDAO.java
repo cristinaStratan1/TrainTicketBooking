@@ -2,6 +2,7 @@ package it.univaq.sose.train.booking.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BookingDAO {
@@ -32,6 +33,36 @@ public class BookingDAO {
 		}
 		
 		return false;
+	}
+	
+	public List<BookingModel> getUserBooking(int userId){
+		Connection connection = DatabaseConnector.connessioneDB();
+
+		String sql = "SELECT * FROM usertickets WHERE iduser = ?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, userId);
+
+		ResultSet result = statement.executeQuery();
+
+		BookingModel booking = null;
+		
+		List<BookingModel> tickets= new ArrayList<>();
+		
+		
+		while (result.next()) {
+			booking = new BookingModel();
+			booking.setBookingId(result.getInt("id")));
+			booking.setStatus(result.getString("status"));
+			booking.setTicketId(result.getInt("idticket"));
+			booking.setGroupid(result.getString("seat"));
+			
+			tickets.add(booking);
+		}
+
+		
+		connection.close();
+
+		return tickets;
 	}
 
 }
