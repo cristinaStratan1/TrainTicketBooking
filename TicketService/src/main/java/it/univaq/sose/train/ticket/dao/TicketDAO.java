@@ -23,7 +23,8 @@ public class TicketDAO {
 			ResultSet resObj = sTicketById.executeQuery();
 			
 			while (resObj.next()) {
-				train = new TicketModel(resObj.getInt("id"), resObj.getInt("noOfPeople"), resObj.getFloat("price"), resObj.getString("class"), ItineraryDAO.getItineraryByID(resObj.getInt("iditinerary")));
+				String ticketClass = getClass(resObj.getInt("idclass"));
+				train = new TicketModel(resObj.getInt("id"), resObj.getInt("noOfPeople"), resObj.getFloat("price"), ticketClass, ItineraryDAO.getItineraryByID(resObj.getInt("iditinerary")));
 			}
 			
 			resObj.close();
@@ -35,6 +36,35 @@ public class TicketDAO {
 		}
 		
 		return train;
+	}
+	
+	public static String getClass (int classId) {
+
+		String ticketClass = null;
+
+		try {
+			
+			Connection connection = DatabaseConnector.connessioneDB();
+			
+			PreparedStatement sClassById = connection.prepareStatement("SELECT * FROM class WHERE id=? LIMIT 1");
+			sClassById.setInt(1, classId);
+			
+			ResultSet resObj = sClassById.executeQuery();
+			
+			while (resObj.next()) {
+				ticketClass = resObj.getString("classType");
+			}
+			
+			resObj.close();
+			sClassById.close();
+			connection.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ticketClass;
+		
 	}
 	
 	public static Integer getBookingByItineraryId (int itineraryId) {

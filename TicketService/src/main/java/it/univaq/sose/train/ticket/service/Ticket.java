@@ -1,5 +1,7 @@
 package it.univaq.sose.train.ticket.service;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
@@ -8,6 +10,7 @@ import javax.jws.WebService;
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.ResponseWrapper;
 
+import it.univaq.sose.train.ticket.model.BookingModel;
 import it.univaq.sose.train.ticket.model.TicketModel;
 import it.univaq.sose.train.ticket.model.TrainAvailabilityModel;
 import it.univaq.sose.train.ticket.model.TrainModel;
@@ -16,6 +19,12 @@ import it.univaq.sose.train.ticket.model.TrainModel;
 public interface Ticket {
 	@WebMethod
 	TicketModel getTicket (int id);
+	
+	@WebMethod
+	List<BookingModel> getBookingByUserId(int userId) throws SQLException;
+	
+	@WebMethod
+	boolean setBooking(int userId, int ticketId, String seat, String status);
 	
 	@WebMethod
 	@ResponseWrapper(localName = "trainAvailabilityResponse", 

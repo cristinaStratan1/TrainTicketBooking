@@ -6,6 +6,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import it.univaq.sose.train.booking.model.RouteModel;
+import it.univaq.sose.train.ticket.service.BookingModel;
+import it.univaq.sose.train.ticket.service.SQLException_Exception;
 
 @WebService
 public interface Booking {
@@ -17,6 +19,6 @@ public interface Booking {
 	boolean setBooking (int userId, int ticketId, String seat, String status);
 	
 	@WebMethod
-	List<BookingModel> getUserBooking(int userId);
+	List<BookingModel> getUserBooking(int userId) throws SQLException_Exception;
 
 }
