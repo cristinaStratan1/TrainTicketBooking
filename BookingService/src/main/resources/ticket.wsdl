@@ -6,6 +6,8 @@
   <xs:element name="getBookingByUserIdResponse" type="tns:getBookingByUserIdResponse"/>
   <xs:element name="getTicket" type="tns:getTicket"/>
   <xs:element name="getTicketResponse" type="tns:getTicketResponse"/>
+  <xs:element name="getTicketsByItinerary" type="tns:getTicketsByItinerary"/>
+  <xs:element name="getTicketsByItineraryResponse" type="tns:getTicketsByItineraryResponse"/>
   <xs:element name="setBooking" type="tns:setBooking"/>
   <xs:element name="setBookingResponse" type="tns:setBookingResponse"/>
   <xs:complexType name="getTicket">
@@ -42,6 +44,16 @@
       <xs:element name="capacity" type="xs:int"/>
       <xs:element name="trainId" type="xs:int"/>
       <xs:element name="trainNo" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTicketsByItinerary">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTicketsByItineraryResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ticketModel"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getBookingByUserId">
@@ -116,12 +128,20 @@
     <wsdl:part element="tns:getTicket" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getTicketsByItinerary">
+    <wsdl:part element="tns:getTicketsByItinerary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getBookingByUserId">
     <wsdl:part element="tns:getBookingByUserId" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setBookingResponse">
     <wsdl:part element="tns:setBookingResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTicketsByItineraryResponse">
+    <wsdl:part element="tns:getTicketsByItineraryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setBooking">
@@ -155,6 +175,12 @@
       <wsdl:output message="tns:getTicketResponse" name="getTicketResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTicketsByItinerary">
+      <wsdl:input message="tns:getTicketsByItinerary" name="getTicketsByItinerary">
+    </wsdl:input>
+      <wsdl:output message="tns:getTicketsByItineraryResponse" name="getTicketsByItineraryResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getBookingByUserId">
       <wsdl:input message="tns:getBookingByUserId" name="getBookingByUserId">
     </wsdl:input>
@@ -184,6 +210,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getTicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTicketsByItinerary">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTicketsByItinerary">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTicketsByItineraryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

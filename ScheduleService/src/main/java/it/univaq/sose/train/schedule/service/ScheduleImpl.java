@@ -11,5 +11,10 @@ public class ScheduleImpl implements Schedule {
 	public List<ItineraryModel> getSchedule (String from, String to, String time) {
 		return ItineraryDAO.getItineraries(from, to, time);
 	}
+
+	@Override
+	public ItineraryModel getItineraryById(Integer id) {
+		return ItineraryDAO.getItineraryByID(id);
+	}
 	
 }

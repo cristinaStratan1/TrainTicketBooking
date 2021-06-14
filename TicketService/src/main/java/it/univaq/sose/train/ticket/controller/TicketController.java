@@ -25,13 +25,12 @@ public class TicketController {
 		return BookingDAO.getUserBooking(userId);
 	}
 	
-	/*public static Integer getAvailability(TrainModel train, int itineraryId) {
+	public static List<TicketModel> getTicketsByItinerary (int itineraryId) {
+		ItineraryModel itinerary = ItineraryDAO.getItineraryByID(itineraryId);
+		List<TicketModel> ticket = TicketDAO.getTicketsByItinerary(itinerary);
+		return ticket;
 		
-		int booked = TicketDAO.getBookingByItineraryId(itineraryId);
-		int availability = train.getCapacity()-booked;
-		return availability;
-		
-	}*/
+	}
 	
 	public static Map<Integer,Integer> getAvailability(String from, String to, String time) {
 		

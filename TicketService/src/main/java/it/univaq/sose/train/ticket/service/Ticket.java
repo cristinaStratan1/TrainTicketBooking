@@ -11,6 +11,7 @@ import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.ResponseWrapper;
 
 import it.univaq.sose.train.ticket.model.BookingModel;
+import it.univaq.sose.train.ticket.model.ItineraryModel;
 import it.univaq.sose.train.ticket.model.TicketModel;
 import it.univaq.sose.train.ticket.model.TrainAvailabilityModel;
 import it.univaq.sose.train.ticket.model.TrainModel;
@@ -36,4 +37,6 @@ public interface Ticket {
 			className = "it.univaq.sose.train.ticket.model.TrainAvailabilityModel")	
 	Future<?> getAvailabilityAsync (String from, String to, String time, AsyncHandler<TrainAvailabilityModel> asyncHandler);
 
+	@WebMethod
+	public List<TicketModel> getTicketsByItinerary (int itineraryId);
 }

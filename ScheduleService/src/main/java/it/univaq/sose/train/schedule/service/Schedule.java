@@ -11,5 +11,8 @@ import it.univaq.sose.train.schedule.model.ItineraryModel;
 public interface Schedule {
 	@WebMethod
 	List<ItineraryModel> getSchedule (String from, String to, String time);
+	
+	@WebMethod
+	ItineraryModel getItineraryById (Integer id);
 
 }

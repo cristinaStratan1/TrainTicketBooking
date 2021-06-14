@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import it.univaq.sose.train.ticket.model.ItineraryModel;
 import it.univaq.sose.train.ticket.model.TicketModel;
 
 public class TicketDAO {
@@ -94,6 +97,32 @@ public class TicketDAO {
 		}
 		
 		return booked;
+	}
+	
+	public static List<TicketModel> getTicketsByItinerary (ItineraryModel itinerary) {
+		
+		List<TicketModel> tickets = new ArrayList<>();
+		
+		try {
+			
+			Connection connection = DatabaseConnector.connessioneDB();
+			
+			PreparedStatement sTicketsByItinerary = connection.prepareStatement("SELECT * FROM tickets WHERE iditinerary = ?");
+			sTicketsByItinerary.setInt(1, itinerary.getItineraryId());
+			
+			ResultSet resObj = sTicketsByItinerary.executeQuery();
+			
+			while (resObj.next()) {
+				String ticketClass = getClass(resObj.getInt("idclass"));
+				TicketModel ticket = new TicketModel(resObj.getInt("id"), resObj.getInt("noOfPeople"), resObj.getFloat("price"), ticketClass, itinerary);
+				tickets.add(ticket);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tickets;
 	}
 
 }

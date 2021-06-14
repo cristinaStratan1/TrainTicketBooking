@@ -12,7 +12,9 @@ import org.apache.cxf.jaxws.ServerAsyncResponse;
 
 import it.univaq.sose.train.ticket.controller.TicketController;
 import it.univaq.sose.train.ticket.dao.BookingDAO;
+import it.univaq.sose.train.ticket.dao.TicketDAO;
 import it.univaq.sose.train.ticket.model.BookingModel;
+import it.univaq.sose.train.ticket.model.ItineraryModel;
 import it.univaq.sose.train.ticket.model.TicketModel;
 import it.univaq.sose.train.ticket.model.TrainAvailabilityModel;
 import it.univaq.sose.train.ticket.model.TrainModel;
@@ -31,8 +33,7 @@ public class TicketImpl implements Ticket {
 	
 	@Override
 	public boolean setBooking(int userId, int ticketId, String seat, String status) {
-		BookingDAO.setBooking(userId, ticketId, seat, status);
-		return true;
+		return BookingDAO.setBooking(userId, ticketId, seat, status);
 	}
 	
 	@Override
@@ -66,6 +67,11 @@ public class TicketImpl implements Ticket {
 		
 		return asyncResponse;		
 	
+	}
+
+	@Override
+	public List<TicketModel> getTicketsByItinerary(int itineraryId) {
+		return TicketController.getTicketsByItinerary(itineraryId);
 	}
 
 }

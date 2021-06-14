@@ -8,6 +8,7 @@ import it.univaq.sose.train.booking.controller.RouteController;
 import it.univaq.sose.train.booking.model.RouteModel;
 import it.univaq.sose.train.ticket.service.BookingModel;
 import it.univaq.sose.train.ticket.service.SQLException_Exception;
+import it.univaq.sose.train.ticket.service.TicketModel;
 
 public class BookingImpl implements Booking {
 	
@@ -35,6 +36,11 @@ public class BookingImpl implements Booking {
 	@Override
 	public List<BookingModel> getUserBooking(int userId) throws SQLException_Exception {
 		return BookingController.getUserBooking(userId);
+	}
+
+	@Override
+	public List<TicketModel> getTicketsByItinerary(int itineraryId) {
+		return BookingController.getTicketsByItineraryId(itineraryId);
 	}
 
 }
