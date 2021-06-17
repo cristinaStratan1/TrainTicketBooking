@@ -1,0 +1,123 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.booking.train.sose.univaq.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="BookingImplService" targetNamespace="http://service.booking.train.sose.univaq.it/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.schedule.train.sose.univaq.it/" targetNamespace="http://service.schedule.train.sose.univaq.it/" version="1.0">
+<xs:element name="getSchedule" type="tns:getSchedule"/>
+<xs:element name="getScheduleResponse" type="tns:getScheduleResponse"/>
+<xs:complexType name="itineraryModel">
+<xs:sequence>
+<xs:element minOccurs="0" name="arrivalTime" type="xs:string"/>
+<xs:element minOccurs="0" name="departureTime" type="xs:string"/>
+<xs:element minOccurs="0" name="from" type="xs:string"/>
+<xs:element name="itineraryId" type="xs:int"/>
+<xs:element minOccurs="0" name="to" type="xs:string"/>
+<xs:element minOccurs="0" name="train" type="tns:trainModel"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="trainModel">
+<xs:sequence>
+<xs:element name="capacity" type="xs:int"/>
+<xs:element name="trainId" type="xs:int"/>
+<xs:element name="trainNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getSchedule">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+<xs:element minOccurs="0" name="arg2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getScheduleResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:itineraryModel"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.booking.train.sose.univaq.it/" xmlns:ns1="http://service.schedule.train.sose.univaq.it/" elementFormDefault="unqualified" targetNamespace="http://service.booking.train.sose.univaq.it/" version="1.0">
+<xs:import namespace="http://service.schedule.train.sose.univaq.it/"/>
+<xs:element name="getRoutes" type="tns:getRoutes"/>
+<xs:element name="getRoutesResponse" type="tns:getRoutesResponse"/>
+<xs:element name="setBooking" type="tns:setBooking"/>
+<xs:element name="setBookingResponse" type="tns:setBookingResponse"/>
+<xs:complexType name="setBooking">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+<xs:element name="arg1" type="xs:int"/>
+<xs:element minOccurs="0" name="arg2" type="xs:string"/>
+<xs:element minOccurs="0" name="arg3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="setBookingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getRoutes">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+<xs:element minOccurs="0" name="arg2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getRoutesResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:routeModel"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="routeModel">
+<xs:sequence>
+<xs:element name="availability" type="xs:int"/>
+<xs:element minOccurs="0" name="schedule" type="ns1:itineraryModel"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="getRoutesResponse">
+<wsdl:part element="tns:getRoutesResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRoutes">
+<wsdl:part element="tns:getRoutes" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="setBookingResponse">
+<wsdl:part element="tns:setBookingResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="setBooking">
+<wsdl:part element="tns:setBooking" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="Booking">
+<wsdl:operation name="setBooking">
+<wsdl:input message="tns:setBooking" name="setBooking"> </wsdl:input>
+<wsdl:output message="tns:setBookingResponse" name="setBookingResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRoutes">
+<wsdl:input message="tns:getRoutes" name="getRoutes"> </wsdl:input>
+<wsdl:output message="tns:getRoutesResponse" name="getRoutesResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BookingImplServiceSoapBinding" type="tns:Booking">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="setBooking">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="setBooking">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="setBookingResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRoutes">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getRoutes">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getRoutesResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="BookingImplService">
+<wsdl:port binding="tns:BookingImplServiceSoapBinding" name="BookingImplPort">
+<soap:address location="http://localhost:8050/BookingService/booking"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
