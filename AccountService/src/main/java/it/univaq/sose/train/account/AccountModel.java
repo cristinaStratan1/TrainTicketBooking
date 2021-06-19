@@ -1,5 +1,8 @@
 package it.univaq.sose.train.account;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Todo")
 public class AccountModel {
 
 	private int id;
@@ -16,6 +19,9 @@ public class AccountModel {
 		
 	}
 	
+	public AccountModel(int id) {
+		this.id = id;
+	}
 	
 
 	public AccountModel(int id, String firstname, String lastname, int age, int groupid, String gender, String address,

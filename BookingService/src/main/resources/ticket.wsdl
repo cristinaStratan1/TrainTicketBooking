@@ -121,7 +121,7 @@
   </wsdl:binding>
   <wsdl:service name="TicketImplService">
     <wsdl:port binding="tns:TicketImplServiceSoapBinding" name="TicketImplPort">
-      <soap:address location="http://localhost:8080/TicketService/ticket"/>
+      <soap:address location="http://localhost:8060/TicketService/ticket"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

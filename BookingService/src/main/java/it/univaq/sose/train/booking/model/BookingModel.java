@@ -11,6 +11,11 @@ public class BookingModel {
 	private String seat;
 	
 	private String status;
+	
+
+	public BookingModel() {
+		super();
+	}
 
 	public BookingModel(int bookingId, int userId, int ticketId, String seat, String status) {
 		super();

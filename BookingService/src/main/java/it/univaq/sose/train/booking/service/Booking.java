@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import it.univaq.sose.train.booking.model.BookingModel;
 import it.univaq.sose.train.booking.model.RouteModel;
 
 @WebService

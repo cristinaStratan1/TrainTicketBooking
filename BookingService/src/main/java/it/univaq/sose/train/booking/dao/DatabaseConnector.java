@@ -12,8 +12,8 @@ public class DatabaseConnector {
     static final String JDBC_DB_URL = "jdbc:mysql://localhost:3306/train_ticket_booking?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
  
     // JDBC Database Credentials
-    static final String JDBC_USER = "train";
-    static final String JDBC_PASS = "train";
+    static final String JDBC_USER = "root";
+    static final String JDBC_PASS = "MyNewPass";
 	
 	public static Connection connessioneDB() {
 		

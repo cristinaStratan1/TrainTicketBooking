@@ -1,17 +1,24 @@
 package it.univaq.sose.train.account;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+
+import it.univaq.sose.train.booking.service.Booking;
+import it.univaq.sose.train.booking.service.BookingImplService;
+import it.univaq.sose.train.booking.service.BookingModel;
+
 
 public class AccountImpl implements Account {
 
 	@Override
 	public AccountModel checkLogin(String username, String password) throws ClassNotFoundException, SQLException {
-		String jdbcURL = "jdbc:mysql://localhost:3306/train_ticket_booking";
+		String jdbcURL = "jdbc:mysql://localhost:3306/train_ticket_booking?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
 		String dbUser = "root";
 		String dbPassword = "MyNewPass";
 
@@ -88,9 +95,15 @@ public class AccountImpl implements Account {
 	
     //method for seeing booked tickets active and non active, made through wsdl and cxf?
 
-	public void AccountTickets() {
+	@Override
+	public List<BookingModel> accountTickets(int userid) {
 		
+		System.out.println("get User Bookings");
+		BookingImplService service = new BookingImplService();
+		Booking bookings = service.getBookingImplPort();
+		List<BookingModel> accountTickets = bookings.getUserBooking(userid);
 		
+		return accountTickets;
 	}
 
 	private void printSQLException(SQLException ex) {

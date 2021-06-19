@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import it.univaq.sose.train.booking.model.BookingModel;
 
 public class BookingDAO {
 	
@@ -35,12 +39,12 @@ public class BookingDAO {
 		return false;
 	}
 	
-	public List<BookingModel> getUserBooking(int userId){
+	public static List<BookingModel> getUserBooking(int userId) throws SQLException{
 		Connection connection = DatabaseConnector.connessioneDB();
 
 		String sql = "SELECT * FROM usertickets WHERE iduser = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setString(1, userId);
+		statement.setInt(1, userId);
 
 		ResultSet result = statement.executeQuery();
 
@@ -51,10 +55,9 @@ public class BookingDAO {
 		
 		while (result.next()) {
 			booking = new BookingModel();
-			booking.setBookingId(result.getInt("id")));
+			booking.setBookingId(result.getInt("id"));
 			booking.setStatus(result.getString("status"));
 			booking.setTicketId(result.getInt("idticket"));
-			booking.setGroupid(result.getString("seat"));
 			
 			tickets.add(booking);
 		}
