@@ -58,6 +58,8 @@ public class BookingDAO {
 			booking.setBookingId(result.getInt("id"));
 			booking.setStatus(result.getString("status"));
 			booking.setTicketId(result.getInt("idticket"));
+      booking.setSeat(result.getString("seat"));
+			booking.setUserId(userId);
 			
 			tickets.add(booking);
 		}
