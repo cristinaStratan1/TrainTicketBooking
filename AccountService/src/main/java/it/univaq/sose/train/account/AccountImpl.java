@@ -50,7 +50,7 @@ public class AccountImpl implements Account {
 	}
 
 	@Override
-	public int registerAccount(AccountModel account) throws ClassNotFoundException {
+	public int registerAccount(String firstname, String lastname, String username, String password, int age,String gender,String address) throws ClassNotFoundException {
 		String INSERT_USERS_SQL = "INSERT INTO user"
 				+ "  (id, firstname, lastname, username, password, age, gender, address, groupid) VALUES "
 				+ " (?, ?, ?, ?, ?, ?, ?, ?,2);";
@@ -75,16 +75,17 @@ public class AccountImpl implements Account {
 			}
 
 			preparedStatement.setInt(1, idp + 1);
-			preparedStatement.setString(2, account.getFirstname());
-			preparedStatement.setString(3, account.getLastname());
-			preparedStatement.setString(4, account.getUsername());
-			preparedStatement.setString(5, account.getPassword());
-			preparedStatement.setInt(6, account.getAge());
-			preparedStatement.setString(7, account.getGender());
-			preparedStatement.setString(8, account.getAddress());
+			preparedStatement.setString(2, firstname);
+			preparedStatement.setString(3, lastname);
+			preparedStatement.setString(4, username);
+			preparedStatement.setString(5, password);
+			preparedStatement.setInt(6, age);
+			preparedStatement.setString(7, gender);
+			preparedStatement.setString(8, address);
 
 			// Step 3: Execute the query or update query
 			result = preparedStatement.executeUpdate();
+			System.out.println(preparedStatement);
 
 		} catch (SQLException e) {
 			// process sql exception
@@ -98,7 +99,6 @@ public class AccountImpl implements Account {
 	@Override
 	public List<BookingModel> accountTickets(int userid) {
 		
-		System.out.println("get User Bookings");
 		BookingImplService service = new BookingImplService();
 		Booking bookings = service.getBookingImplPort();
 		List<BookingModel> accountTickets = bookings.getUserBooking(userid);
