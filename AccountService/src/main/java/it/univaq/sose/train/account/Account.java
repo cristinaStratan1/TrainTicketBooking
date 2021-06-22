@@ -31,5 +31,6 @@ public interface Account {
 	@Path("/userTickets")
 	@Produces({ MediaType.APPLICATION_JSON })
 	List<BookingModel> accountTickets(@QueryParam("userid") int userid) ;
+	int registerAccount(AccountModel account) throws ClassNotFoundException;
 
 }

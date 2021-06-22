@@ -2,6 +2,10 @@
   <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.schedule.train.sose.univaq.it/" elementFormDefault="unqualified" targetNamespace="http://service.schedule.train.sose.univaq.it/" version="1.0">
 
+  <xs:element name="getItineraryById" type="tns:getItineraryById"/>
+
+  <xs:element name="getItineraryByIdResponse" type="tns:getItineraryByIdResponse"/>
+
   <xs:element name="getSchedule" type="tns:getSchedule"/>
 
   <xs:element name="getScheduleResponse" type="tns:getScheduleResponse"/>
@@ -39,10 +43,30 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getItineraryById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getItineraryByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:itineraryModel"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getItineraryByIdResponse">
+    <wsdl:part element="tns:getItineraryByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getSchedule">
     <wsdl:part element="tns:getSchedule" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItineraryById">
+    <wsdl:part element="tns:getItineraryById" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getScheduleResponse">
@@ -56,6 +80,12 @@
       <wsdl:output message="tns:getScheduleResponse" name="getScheduleResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getItineraryById">
+      <wsdl:input message="tns:getItineraryById" name="getItineraryById">
+    </wsdl:input>
+      <wsdl:output message="tns:getItineraryByIdResponse" name="getItineraryByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ScheduleImplServiceSoapBinding" type="tns:Schedule">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -65,6 +95,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getScheduleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItineraryById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItineraryById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItineraryByIdResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

@@ -14,6 +14,7 @@ import it.univaq.sose.train.booking.service.BookingImplService;
 import it.univaq.sose.train.booking.service.BookingModel;
 
 
+
 public class AccountImpl implements Account {
 
 	@Override
@@ -98,7 +99,6 @@ public class AccountImpl implements Account {
 
 	@Override
 	public List<BookingModel> accountTickets(int userid) {
-		
 		BookingImplService service = new BookingImplService();
 		Booking bookings = service.getBookingImplPort();
 		List<BookingModel> accountTickets = bookings.getUserBooking(userid);

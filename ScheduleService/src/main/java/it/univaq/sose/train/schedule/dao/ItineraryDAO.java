@@ -20,7 +20,8 @@ public class ItineraryDAO {
 			
 			Connection connection = DatabaseConnector.connessioneDB();
 			
-			PreparedStatement sItinerariesByTime = connection.prepareStatement("SELECT * FROM itinerary WHERE itinerary.from=? AND itinerary.to=? AND TIME(itinerary.departureTime)>?");
+			PreparedStatement sItinerariesByTime = connection.prepareStatement("SELECT * FROM itinerary WHERE "
+					+ "itinerary.from=? AND itinerary.to=? AND TIME(itinerary.departureTime)>? ORDER BY itinerary.departureTime");
 			sItinerariesByTime.setString(1, from);
 			sItinerariesByTime.setString(2, to);
 			sItinerariesByTime.setString(3, time);

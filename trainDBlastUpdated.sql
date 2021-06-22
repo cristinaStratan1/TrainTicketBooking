@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `class`
+--
+
+DROP TABLE IF EXISTS `class`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `class` (
+  `id` int NOT NULL,
+  `classType` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `class`
+--
+
+LOCK TABLES `class` WRITE;
+/*!40000 ALTER TABLE `class` DISABLE KEYS */;
+INSERT INTO `class` VALUES (1,'ECONOMY'),(2,'FIRST CLASS');
+/*!40000 ALTER TABLE `class` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gender`
 --
 
@@ -108,11 +133,13 @@ CREATE TABLE `tickets` (
   `id` int NOT NULL AUTO_INCREMENT,
   `noOfPeople` int NOT NULL,
   `price` float NOT NULL,
-  `class` varchar(45) NOT NULL,
+  `idclass` int NOT NULL,
   `iditinerary` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idtickets_UNIQUE` (`id`),
   KEY `iditinerary_idx` (`iditinerary`),
+  KEY `idclass_idx` (`idclass`),
+  CONSTRAINT `idclass` FOREIGN KEY (`idclass`) REFERENCES `class` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `iditinerary` FOREIGN KEY (`iditinerary`) REFERENCES `itinerary` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -123,7 +150,7 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (1,0,45,'ECONOMY',1),(2,0,90,'FIRST CLASS',1);
+INSERT INTO `tickets` VALUES (1,0,45,1,1),(2,0,90,2,1);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,6 +196,8 @@ CREATE TABLE `user` (
   `gender` varchar(45) NOT NULL,
   `address` varchar(45) DEFAULT NULL,
   `groupid` int NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idUser_UNIQUE` (`id`),
   KEY `groupid_idx` (`groupid`),
@@ -184,7 +213,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'John','Red',28,'M','First Street',2);
+INSERT INTO `user` VALUES (1,'John','Red',28,'M','First Street',2,'John1','password');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,13 +230,14 @@ CREATE TABLE `usertickets` (
   `idticket` int NOT NULL,
   `seat` varchar(45) DEFAULT NULL,
   `status` varchar(45) NOT NULL,
+  `bookDate` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idusertickets_UNIQUE` (`id`),
   KEY `iduser_idx` (`iduser`),
   KEY `idticket_idx` (`idticket`),
   CONSTRAINT `idticket` FOREIGN KEY (`idticket`) REFERENCES `tickets` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `iduser` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +246,7 @@ CREATE TABLE `usertickets` (
 
 LOCK TABLES `usertickets` WRITE;
 /*!40000 ALTER TABLE `usertickets` DISABLE KEYS */;
-INSERT INTO `usertickets` VALUES (1,1,1,'4','DONE');
+INSERT INTO `usertickets` VALUES (1,1,1,'4','DONE','0000-00-00 00:00:00'),(3,1,2,'24','DONE','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `usertickets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -229,4 +259,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-21 15:14:51
+-- Dump completed on 2021-06-10 19:48:26
