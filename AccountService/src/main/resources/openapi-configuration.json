@@ -15,7 +15,7 @@
 		},
 		"servers": [
 			{
-				"url": "http://localhost:8040/AccountServ/rest",
+				"url": "http://localhost:8051/AccountServ/rest",
 				"description": "The description of the Server goes here!"
 			}
 		]
