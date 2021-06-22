@@ -2,7 +2,7 @@ package it.univaq.sose.train.account;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="Todo")
+@XmlRootElement(name="AccountModel")
 public class AccountModel {
 
 	private int id;
