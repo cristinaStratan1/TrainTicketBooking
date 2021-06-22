@@ -24,7 +24,8 @@ public interface Account {
 	@POST
 	@Path("/register")
 	@Produces({ MediaType.APPLICATION_JSON })
-	int registerAccount(AccountModel account) throws ClassNotFoundException;
+	int registerAccount(@QueryParam("firstname") String firstname, @QueryParam("lastname") String lastname, @QueryParam("username") String username, 
+			@QueryParam("password") String password, @QueryParam("age") int age, @QueryParam("gender") String gender, @QueryParam("address") String address) throws ClassNotFoundException;
 	
 	@POST
 	@Path("/userTickets")
