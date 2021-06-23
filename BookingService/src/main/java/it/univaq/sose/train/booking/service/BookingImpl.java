@@ -6,8 +6,6 @@ import java.util.List;
 
 import it.univaq.sose.train.booking.controller.BookingController;
 import it.univaq.sose.train.booking.controller.RouteController;
-import it.univaq.sose.train.booking.dao.BookingDAO;
-import it.univaq.sose.train.booking.model.BookingModel;
 
 import it.univaq.sose.train.booking.model.RouteModel;
 import it.univaq.sose.train.ticket.service.BookingModel;

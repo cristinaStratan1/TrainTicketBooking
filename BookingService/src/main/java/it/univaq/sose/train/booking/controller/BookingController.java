@@ -8,6 +8,7 @@ import it.univaq.sose.train.ticket.service.Ticket;
 import it.univaq.sose.train.ticket.service.TicketImplService;
 import it.univaq.sose.train.ticket.service.TicketModel;
 
+
 public class BookingController {
 
 	public static boolean setBooking(int userId, int ticketId, String seat, String status) {
