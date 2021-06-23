@@ -60,7 +60,7 @@ public class AccountImpl implements Account {
 
 		Class.forName("com.mysql.jdbc.Driver");
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pollweb", "root",
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_ticket_booking", "root",
 				"MyNewPass");
 
 				// Step 2:Create a statement using connection object
