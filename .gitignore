@@ -46,3 +46,7 @@ testem.log
 Thumbs.db
 /.metadata/
 /.recommenders/
+AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
+BookingService/src/main/java/it/univaq/sose/train/booking/dao/DatabaseConnector.java
+ScheduleService/src/main/java/it/univaq/sose/train/schedule/dao/DatabaseConnector.java
+TicketService/src/main/java/it/univaq/sose/train/ticket/dao/DatabaseConnector.java
