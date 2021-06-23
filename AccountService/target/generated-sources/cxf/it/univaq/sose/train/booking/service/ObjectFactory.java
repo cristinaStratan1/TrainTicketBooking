@@ -26,6 +26,8 @@ public class ObjectFactory {
 
     private final static QName _GetRoutes_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getRoutes");
     private final static QName _GetRoutesResponse_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getRoutesResponse");
+    private final static QName _GetTicketsByItinerary_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getTicketsByItinerary");
+    private final static QName _GetTicketsByItineraryResponse_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getTicketsByItineraryResponse");
     private final static QName _GetUserBooking_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getUserBooking");
     private final static QName _GetUserBookingResponse_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getUserBookingResponse");
     private final static QName _SetBooking_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "setBooking");
@@ -52,6 +54,22 @@ public class ObjectFactory {
      */
     public GetRoutesResponse createGetRoutesResponse() {
         return new GetRoutesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetTicketsByItinerary }
+     * 
+     */
+    public GetTicketsByItinerary createGetTicketsByItinerary() {
+        return new GetTicketsByItinerary();
+    }
+
+    /**
+     * Create an instance of {@link GetTicketsByItineraryResponse }
+     * 
+     */
+    public GetTicketsByItineraryResponse createGetTicketsByItineraryResponse() {
+        return new GetTicketsByItineraryResponse();
     }
 
     /**
@@ -87,14 +105,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BookingModel }
-     * 
-     */
-    public BookingModel createBookingModel() {
-        return new BookingModel();
-    }
-
-    /**
      * Create an instance of {@link RouteModel }
      * 
      */
@@ -126,6 +136,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://service.booking.train.sose.univaq.it/", name = "getRoutesResponse")
     public JAXBElement<GetRoutesResponse> createGetRoutesResponse(GetRoutesResponse value) {
         return new JAXBElement<GetRoutesResponse>(_GetRoutesResponse_QNAME, GetRoutesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTicketsByItinerary }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GetTicketsByItinerary }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://service.booking.train.sose.univaq.it/", name = "getTicketsByItinerary")
+    public JAXBElement<GetTicketsByItinerary> createGetTicketsByItinerary(GetTicketsByItinerary value) {
+        return new JAXBElement<GetTicketsByItinerary>(_GetTicketsByItinerary_QNAME, GetTicketsByItinerary.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTicketsByItineraryResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GetTicketsByItineraryResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://service.booking.train.sose.univaq.it/", name = "getTicketsByItineraryResponse")
+    public JAXBElement<GetTicketsByItineraryResponse> createGetTicketsByItineraryResponse(GetTicketsByItineraryResponse value) {
+        return new JAXBElement<GetTicketsByItineraryResponse>(_GetTicketsByItineraryResponse_QNAME, GetTicketsByItineraryResponse.class, null, value);
     }
 
     /**

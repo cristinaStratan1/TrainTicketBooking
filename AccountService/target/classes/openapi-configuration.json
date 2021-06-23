@@ -15,10 +15,11 @@
 		},
 		"servers": [
 			{
-				"url": "http://localhost:8040/AccountServ/rest",
+				"url": "http://localhost:8080/AccountServ/rest",
 				"description": "The description of the Server goes here!"
 			}
 		]
 	},
 	"userDefinedOptions": {"support.swagger.ui": true}
 }
+

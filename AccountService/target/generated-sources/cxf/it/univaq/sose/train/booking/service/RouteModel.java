@@ -8,9 +8,9 @@ import it.univaq.sose.train.schedule.service.ItineraryModel;
 
 
 /**
- * <p>Java class for routeModel complex type.
+ * <p>Classe Java per routeModel complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
  * &lt;complexType name="routeModel"&gt;
@@ -38,7 +38,7 @@ public class RouteModel {
     protected ItineraryModel schedule;
 
     /**
-     * Gets the value of the availability property.
+     * Recupera il valore della proprietà availability.
      * 
      */
     public int getAvailability() {
@@ -46,7 +46,7 @@ public class RouteModel {
     }
 
     /**
-     * Sets the value of the availability property.
+     * Imposta il valore della proprietà availability.
      * 
      */
     public void setAvailability(int value) {
@@ -54,7 +54,7 @@ public class RouteModel {
     }
 
     /**
-     * Gets the value of the schedule property.
+     * Recupera il valore della proprietà schedule.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class RouteModel {
     }
 
     /**
-     * Sets the value of the schedule property.
+     * Imposta il valore della proprietà schedule.
      * 
      * @param value
      *     allowed object is

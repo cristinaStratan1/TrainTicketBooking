@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for itineraryModel complex type.
+ * <p>Classe Java per itineraryModel complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
  * &lt;complexType name="itineraryModel"&gt;
@@ -49,7 +49,7 @@ public class ItineraryModel {
     protected TrainModel train;
 
     /**
-     * Gets the value of the arrivalTime property.
+     * Recupera il valore della proprietà arrivalTime.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Sets the value of the arrivalTime property.
+     * Imposta il valore della proprietà arrivalTime.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Gets the value of the departureTime property.
+     * Recupera il valore della proprietà departureTime.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Sets the value of the departureTime property.
+     * Imposta il valore della proprietà departureTime.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Gets the value of the from property.
+     * Recupera il valore della proprietà from.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Sets the value of the from property.
+     * Imposta il valore della proprietà from.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Gets the value of the itineraryId property.
+     * Recupera il valore della proprietà itineraryId.
      * 
      */
     public int getItineraryId() {
@@ -129,7 +129,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Sets the value of the itineraryId property.
+     * Imposta il valore della proprietà itineraryId.
      * 
      */
     public void setItineraryId(int value) {
@@ -137,7 +137,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Gets the value of the to property.
+     * Recupera il valore della proprietà to.
      * 
      * @return
      *     possible object is
@@ -149,7 +149,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Sets the value of the to property.
+     * Imposta il valore della proprietà to.
      * 
      * @param value
      *     allowed object is
@@ -161,7 +161,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Gets the value of the train property.
+     * Recupera il valore della proprietà train.
      * 
      * @return
      *     possible object is
@@ -173,7 +173,7 @@ public class ItineraryModel {
     }
 
     /**
-     * Sets the value of the train property.
+     * Imposta il valore della proprietà train.
      * 
      * @param value
      *     allowed object is

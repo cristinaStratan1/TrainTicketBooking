@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetItineraryById_QNAME = new QName("http://service.schedule.train.sose.univaq.it/", "getItineraryById");
+    private final static QName _GetItineraryByIdResponse_QNAME = new QName("http://service.schedule.train.sose.univaq.it/", "getItineraryByIdResponse");
     private final static QName _GetSchedule_QNAME = new QName("http://service.schedule.train.sose.univaq.it/", "getSchedule");
     private final static QName _GetScheduleResponse_QNAME = new QName("http://service.schedule.train.sose.univaq.it/", "getScheduleResponse");
 
@@ -32,6 +34,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GetItineraryById }
+     * 
+     */
+    public GetItineraryById createGetItineraryById() {
+        return new GetItineraryById();
+    }
+
+    /**
+     * Create an instance of {@link GetItineraryByIdResponse }
+     * 
+     */
+    public GetItineraryByIdResponse createGetItineraryByIdResponse() {
+        return new GetItineraryByIdResponse();
     }
 
     /**
@@ -64,6 +82,32 @@ public class ObjectFactory {
      */
     public TrainModel createTrainModel() {
         return new TrainModel();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetItineraryById }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GetItineraryById }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://service.schedule.train.sose.univaq.it/", name = "getItineraryById")
+    public JAXBElement<GetItineraryById> createGetItineraryById(GetItineraryById value) {
+        return new JAXBElement<GetItineraryById>(_GetItineraryById_QNAME, GetItineraryById.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetItineraryByIdResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GetItineraryByIdResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://service.schedule.train.sose.univaq.it/", name = "getItineraryByIdResponse")
+    public JAXBElement<GetItineraryByIdResponse> createGetItineraryByIdResponse(GetItineraryByIdResponse value) {
+        return new JAXBElement<GetItineraryByIdResponse>(_GetItineraryByIdResponse_QNAME, GetItineraryByIdResponse.class, null, value);
     }
 
     /**

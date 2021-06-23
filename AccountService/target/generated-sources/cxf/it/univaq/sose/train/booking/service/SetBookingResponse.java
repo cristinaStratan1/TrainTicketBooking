@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for setBookingResponse complex type.
+ * <p>Classe Java per setBookingResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
  * &lt;complexType name="setBookingResponse"&gt;
@@ -36,7 +36,7 @@ public class SetBookingResponse {
     protected boolean _return;
 
     /**
-     * Gets the value of the return property.
+     * Recupera il valore della proprietà return.
      * 
      */
     public boolean isReturn() {
@@ -44,7 +44,7 @@ public class SetBookingResponse {
     }
 
     /**
-     * Sets the value of the return property.
+     * Imposta il valore della proprietà return.
      * 
      */
     public void setReturn(boolean value) {

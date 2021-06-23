@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for trainModel complex type.
+ * <p>Classe Java per trainModel complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
  * &lt;complexType name="trainModel"&gt;
@@ -40,7 +40,7 @@ public class TrainModel {
     protected int trainNo;
 
     /**
-     * Gets the value of the capacity property.
+     * Recupera il valore della proprietà capacity.
      * 
      */
     public int getCapacity() {
@@ -48,7 +48,7 @@ public class TrainModel {
     }
 
     /**
-     * Sets the value of the capacity property.
+     * Imposta il valore della proprietà capacity.
      * 
      */
     public void setCapacity(int value) {
@@ -56,7 +56,7 @@ public class TrainModel {
     }
 
     /**
-     * Gets the value of the trainId property.
+     * Recupera il valore della proprietà trainId.
      * 
      */
     public int getTrainId() {
@@ -64,7 +64,7 @@ public class TrainModel {
     }
 
     /**
-     * Sets the value of the trainId property.
+     * Imposta il valore della proprietà trainId.
      * 
      */
     public void setTrainId(int value) {
@@ -72,7 +72,7 @@ public class TrainModel {
     }
 
     /**
-     * Gets the value of the trainNo property.
+     * Recupera il valore della proprietà trainNo.
      * 
      */
     public int getTrainNo() {
@@ -80,7 +80,7 @@ public class TrainModel {
     }
 
     /**
-     * Sets the value of the trainNo property.
+     * Imposta il valore della proprietà trainNo.
      * 
      */
     public void setTrainNo(int value) {

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getRoutes complex type.
+ * <p>Classe Java per getRoutes complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
  * &lt;complexType name="getRoutes"&gt;
@@ -40,7 +40,7 @@ public class GetRoutes {
     protected String arg2;
 
     /**
-     * Gets the value of the arg0 property.
+     * Recupera il valore della proprietà arg0.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class GetRoutes {
     }
 
     /**
-     * Sets the value of the arg0 property.
+     * Imposta il valore della proprietà arg0.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class GetRoutes {
     }
 
     /**
-     * Gets the value of the arg1 property.
+     * Recupera il valore della proprietà arg1.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class GetRoutes {
     }
 
     /**
-     * Sets the value of the arg1 property.
+     * Imposta il valore della proprietà arg1.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class GetRoutes {
     }
 
     /**
-     * Gets the value of the arg2 property.
+     * Recupera il valore della proprietà arg2.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class GetRoutes {
     }
 
     /**
-     * Sets the value of the arg2 property.
+     * Imposta il valore della proprietà arg2.
      * 
      * @param value
      *     allowed object is

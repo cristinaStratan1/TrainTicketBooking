@@ -13,7 +13,8 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import it.univaq.sose.train.booking.service.BookingModel;
+import it.univaq.sose.train.booking.service.SQLExceptionException;
+import it.univaq.sose.train.ticket.service.BookingModel;
 
 
 @Path("/account")
@@ -61,6 +62,6 @@ public interface Account {
 			 )
 	@GET
 	@Path("{userTickets}")
-	List<BookingModel> accountTickets(@PathParam(value ="userid") int userid) ;
+	List<BookingModel> accountTickets(@PathParam(value ="userid") int userid) throws SQLExceptionException ;
 
 }

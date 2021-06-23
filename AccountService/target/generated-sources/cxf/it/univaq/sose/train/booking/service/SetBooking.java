@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for setBooking complex type.
+ * <p>Classe Java per setBooking complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
  * &lt;complexType name="setBooking"&gt;
@@ -43,7 +43,7 @@ public class SetBooking {
     protected String arg3;
 
     /**
-     * Gets the value of the arg0 property.
+     * Recupera il valore della proprietà arg0.
      * 
      */
     public int getArg0() {
@@ -51,7 +51,7 @@ public class SetBooking {
     }
 
     /**
-     * Sets the value of the arg0 property.
+     * Imposta il valore della proprietà arg0.
      * 
      */
     public void setArg0(int value) {
@@ -59,7 +59,7 @@ public class SetBooking {
     }
 
     /**
-     * Gets the value of the arg1 property.
+     * Recupera il valore della proprietà arg1.
      * 
      */
     public int getArg1() {
@@ -67,7 +67,7 @@ public class SetBooking {
     }
 
     /**
-     * Sets the value of the arg1 property.
+     * Imposta il valore della proprietà arg1.
      * 
      */
     public void setArg1(int value) {
@@ -75,7 +75,7 @@ public class SetBooking {
     }
 
     /**
-     * Gets the value of the arg2 property.
+     * Recupera il valore della proprietà arg2.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class SetBooking {
     }
 
     /**
-     * Sets the value of the arg2 property.
+     * Imposta il valore della proprietà arg2.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class SetBooking {
     }
 
     /**
-     * Gets the value of the arg3 property.
+     * Recupera il valore della proprietà arg3.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class SetBooking {
     }
 
     /**
-     * Sets the value of the arg3 property.
+     * Imposta il valore della proprietà arg3.
      * 
      * @param value
      *     allowed object is
