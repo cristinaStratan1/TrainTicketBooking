@@ -62,3 +62,4 @@ AccountService/target/generated-sources/cxf/it/univaq/sose/train/booking/service
 AccountService/target/classes/it/univaq/sose/train/account/AccountImpl.class
 AccountService/target/classes/it/univaq/sose/train/account/Account.class
 AccountService/target/classes/booking.wsdl
+Servers/Tomcat v8.5 Server at localhost-config/server.xml

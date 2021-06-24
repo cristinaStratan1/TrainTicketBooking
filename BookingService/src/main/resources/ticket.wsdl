@@ -10,6 +10,8 @@
   <xs:element name="getTicketsByItineraryResponse" type="tns:getTicketsByItineraryResponse"/>
   <xs:element name="setBooking" type="tns:setBooking"/>
   <xs:element name="setBookingResponse" type="tns:setBookingResponse"/>
+  <xs:element name="setTicketPayed" type="tns:setTicketPayed"/>
+  <xs:element name="setTicketPayedResponse" type="tns:setTicketPayedResponse"/>
   <xs:complexType name="getTicket">
     <xs:sequence>
       <xs:element name="arg0" type="xs:int"/>
@@ -80,10 +82,20 @@
       <xs:element name="arg0" type="xs:int"/>
       <xs:element name="arg1" type="xs:int"/>
       <xs:element minOccurs="0" name="arg2" type="xs:string"/>
-      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="setBookingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setTicketPayed">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setTicketPayedResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean"/>
     </xs:sequence>
@@ -128,20 +140,32 @@
     <wsdl:part element="tns:getTicket" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getTicketsByItinerary">
-    <wsdl:part element="tns:getTicketsByItinerary" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getBookingByUserId">
-    <wsdl:part element="tns:getBookingByUserId" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="setBookingResponse">
     <wsdl:part element="tns:setBookingResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getTicketsByItineraryResponse">
     <wsdl:part element="tns:getTicketsByItineraryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookingByUserIdResponse">
+    <wsdl:part element="tns:getBookingByUserIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setTicketPayed">
+    <wsdl:part element="tns:setTicketPayed" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailability">
+    <wsdl:part element="tns:getAvailability" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTicketsByItinerary">
+    <wsdl:part element="tns:getTicketsByItinerary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookingByUserId">
+    <wsdl:part element="tns:getBookingByUserId" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setBooking">
@@ -160,12 +184,8 @@
     <wsdl:part element="tns:SQLException" name="SQLException">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getBookingByUserIdResponse">
-    <wsdl:part element="tns:getBookingByUserIdResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getAvailability">
-    <wsdl:part element="tns:getAvailability" name="parameters">
+  <wsdl:message name="setTicketPayedResponse">
+    <wsdl:part element="tns:setTicketPayedResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="Ticket">
@@ -193,6 +213,12 @@
       <wsdl:input message="tns:setBooking" name="setBooking">
     </wsdl:input>
       <wsdl:output message="tns:setBookingResponse" name="setBookingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTicketPayed">
+      <wsdl:input message="tns:setTicketPayed" name="setTicketPayed">
+    </wsdl:input>
+      <wsdl:output message="tns:setTicketPayedResponse" name="setTicketPayedResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getAvailability">
@@ -240,6 +266,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="setBookingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTicketPayed">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setTicketPayed">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setTicketPayedResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

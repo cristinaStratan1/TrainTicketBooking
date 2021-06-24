@@ -11,7 +11,6 @@ import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.ResponseWrapper;
 
 import it.univaq.sose.train.ticket.model.BookingModel;
-import it.univaq.sose.train.ticket.model.ItineraryModel;
 import it.univaq.sose.train.ticket.model.TicketModel;
 import it.univaq.sose.train.ticket.model.TrainAvailabilityModel;
 import it.univaq.sose.train.ticket.model.TrainModel;
@@ -25,7 +24,7 @@ public interface Ticket {
 	List<BookingModel> getBookingByUserId(int userId) throws SQLException;
 	
 	@WebMethod
-	boolean setBooking(int userId, int ticketId, String seat, String status);
+	boolean setBooking(int userId, int ticketId, String seat);
 	
 	@WebMethod
 	@ResponseWrapper(localName = "trainAvailabilityResponse", 
@@ -39,4 +38,7 @@ public interface Ticket {
 
 	@WebMethod
 	public List<TicketModel> getTicketsByItinerary (int itineraryId);
+	
+	@WebMethod
+	boolean setTicketPayed(int userId, int ticketId);
 }

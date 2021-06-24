@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,32 +14,62 @@ import it.univaq.sose.train.ticket.model.BookingModel;
 
 public class BookingDAO {
 	
-	public static boolean setBooking (int userId, int ticketId, String seat, String status) {
+	public static boolean setBooking (int userId, int ticketId, String seat) {
+		
+		boolean insert = true;
 		
 		try {
 			
 			Connection connection = DatabaseConnector.connessioneDB();
 				
-			PreparedStatement insertBooking = connection.prepareStatement("INSERT INTO usertickets (iduser, idticket, seat, status)\r\n" + 
-					"VALUES (?, ?, ?, ?)");
+			PreparedStatement insertBooking = connection.prepareStatement("INSERT INTO usertickets (iduser, idticket, seat, status, bookDate)\r\n" + 
+					"VALUES (?, ?, ?, ?, ?)");
 			insertBooking.setInt(1, userId);
 			insertBooking.setInt(2, ticketId);
 			insertBooking.setString(3, seat);
-			insertBooking.setString(4, status);
+			insertBooking.setString(4, "Waiting for the payment");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String date = LocalDateTime.now().format(formatter);
+			insertBooking.setString(5, date);
 			
-			boolean insert = insertBooking.execute();
+			insertBooking.execute();
 			
 			insertBooking.close();
 			connection.close();		
 			
-			return insert;
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			insert=false;
 		}
 		
-		return false;
+		return insert;
+	}
+	
+	public static boolean setTicketPayed (int userId, int ticketId) {
+		
+		boolean update = true;
+		
+		try {
+			
+			Connection connection = DatabaseConnector.connessioneDB();
+			
+			PreparedStatement updateTicketStatus = connection.prepareStatement("UPDATE usertickets SET status=? WHERE iduser=? AND idticket=?");
+			updateTicketStatus.setString(1, "DONE");
+			updateTicketStatus.setInt(2, userId);
+			updateTicketStatus.setInt(3, ticketId);
+			
+			update = updateTicketStatus.execute();
+			
+			updateTicketStatus.close();
+			connection.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			update = false;
+		}
+		
+		return update;
 	}
 	
 
