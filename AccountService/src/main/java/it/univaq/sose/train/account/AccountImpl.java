@@ -11,7 +11,8 @@ import java.util.List;
 
 import it.univaq.sose.train.booking.service.Booking;
 import it.univaq.sose.train.booking.service.BookingImplService;
-import it.univaq.sose.train.booking.service.BookingModel;
+import it.univaq.sose.train.booking.service.SQLExceptionException;
+import it.univaq.sose.train.ticket.service.BookingModel;
 
 
 public class AccountImpl implements Account {
@@ -31,10 +32,9 @@ public class AccountImpl implements Account {
 
 		ResultSet result = statement.executeQuery();
 
-		AccountModel account = null;
+		AccountModel account = 	new AccountModel();
 
 		if (result.next()) {
-			account = new AccountModel();
 			account.setId(Integer.parseInt(result.getString("id")));
 			account.setFirstname(result.getString("firstname"));
 			account.setLastname(result.getString("lastname"));
@@ -50,16 +50,17 @@ public class AccountImpl implements Account {
 	}
 
 	@Override
-	public int registerAccount(String firstname, String lastname, String username, String password, int age,String gender,String address) throws ClassNotFoundException {
+	public String registerAccount(String firstname, String lastname, String username, String password, int age,String gender,String address) throws ClassNotFoundException {
 		String INSERT_USERS_SQL = "INSERT INTO user"
 				+ "  (id, firstname, lastname, username, password, age, gender, address, groupid) VALUES "
 				+ " (?, ?, ?, ?, ?, ?, ?, ?,2);";
 
 		int result = 0;
+		String response = "failure";
 
 		Class.forName("com.mysql.jdbc.Driver");
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pollweb", "root",
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_ticket_booking?serverTimezone=UTC", "root",
 				"MyNewPass");
 
 				// Step 2:Create a statement using connection object
@@ -85,19 +86,22 @@ public class AccountImpl implements Account {
 
 			// Step 3: Execute the query or update query
 			result = preparedStatement.executeUpdate();
+			 if (result > 0) {
+		            response = ("success");
+		        }
 			System.out.println(preparedStatement);
 
 		} catch (SQLException e) {
 			// process sql exception
 			printSQLException(e);
 		}
-		return result;
+		return response;
 	}
 	
     //method for seeing booked tickets active and non active, made through wsdl and cxf?
 
 	@Override
-	public List<BookingModel> accountTickets(int userid) {
+	public List<BookingModel> accountTickets(int userid) throws SQLExceptionException {
 		
 		BookingImplService service = new BookingImplService();
 		Booking bookings = service.getBookingImplPort();
