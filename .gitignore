@@ -46,6 +46,7 @@ testem.log
 Thumbs.db
 /.metadata/
 /.recommenders/
+*/target/*
 AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
 BookingService/src/main/java/it/univaq/sose/train/booking/dao/DatabaseConnector.java
 ScheduleService/src/main/java/it/univaq/sose/train/schedule/dao/DatabaseConnector.java
@@ -55,3 +56,9 @@ AccountService/target/classes/it/univaq/sose/train/account/Account.class
 AccountService/target/classes/it/univaq/sose/train/account/AccountImpl.class
 AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
 AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.xml
+AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
+AccountService/target/generated-sources/cxf/it/univaq/sose/train/booking/service/BookingImplService.java
+AccountService/target/generated-sources/cxf/it/univaq/sose/train/booking/service/Booking.java
+AccountService/target/classes/it/univaq/sose/train/account/AccountImpl.class
+AccountService/target/classes/it/univaq/sose/train/account/Account.class
+AccountService/target/classes/booking.wsdl
