@@ -10,7 +10,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import it.univaq.sose.train.booking.service.BookingModel;
+import it.univaq.sose.train.booking.service.SQLExceptionException;
+import it.univaq.sose.train.ticket.service.BookingModel;
+
 
 
 @Path("/account")
@@ -30,6 +32,6 @@ public interface Account {
 	@POST
 	@Path("/userTickets")
 	@Produces({ MediaType.APPLICATION_JSON })
-	List<BookingModel> accountTickets(@QueryParam("userid") int userid) ;
+	List<BookingModel> accountTickets(@QueryParam("userid") int userid) throws SQLExceptionException ;
 
 }

@@ -11,7 +11,8 @@ import java.util.List;
 
 import it.univaq.sose.train.booking.service.Booking;
 import it.univaq.sose.train.booking.service.BookingImplService;
-import it.univaq.sose.train.booking.service.BookingModel;
+import it.univaq.sose.train.booking.service.SQLExceptionException;
+import it.univaq.sose.train.ticket.service.BookingModel;
 
 
 public class AccountImpl implements Account {
@@ -19,8 +20,8 @@ public class AccountImpl implements Account {
 	@Override
 	public AccountModel checkLogin(String username, String password) throws ClassNotFoundException, SQLException {
 		String jdbcURL = "jdbc:mysql://localhost:3306/train_ticket_booking?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-		String dbUser = "root";
-		String dbPassword = "MyNewPass";
+		String dbUser = "train";
+		String dbPassword = "train";
 
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
@@ -59,8 +60,8 @@ public class AccountImpl implements Account {
 
 		Class.forName("com.mysql.jdbc.Driver");
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pollweb", "root",
-				"MyNewPass");
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_ticket_booking", "train",
+				"train");
 
 				// Step 2:Create a statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
@@ -97,7 +98,7 @@ public class AccountImpl implements Account {
     //method for seeing booked tickets active and non active, made through wsdl and cxf?
 
 	@Override
-	public List<BookingModel> accountTickets(int userid) {
+	public List<BookingModel> accountTickets(int userid) throws SQLExceptionException {
 		
 		BookingImplService service = new BookingImplService();
 		Booking bookings = service.getBookingImplPort();

@@ -51,3 +51,7 @@ BookingService/src/main/java/it/univaq/sose/train/booking/dao/DatabaseConnector.
 ScheduleService/src/main/java/it/univaq/sose/train/schedule/dao/DatabaseConnector.java
 TicketService/src/main/java/it/univaq/sose/train/ticket/dao/DatabaseConnector.java
 AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
+AccountService/target/classes/it/univaq/sose/train/account/Account.class
+AccountService/target/classes/it/univaq/sose/train/account/AccountImpl.class
+AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
+AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.xml
