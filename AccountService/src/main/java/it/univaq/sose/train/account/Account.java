@@ -13,8 +13,6 @@ import javax.ws.rs.core.MediaType;
 import it.univaq.sose.train.booking.service.SQLExceptionException;
 import it.univaq.sose.train.ticket.service.BookingModel;
 
-
-
 @Path("/account")
 public interface Account {
 	
@@ -26,7 +24,7 @@ public interface Account {
 	@POST
 	@Path("/register")
 	@Produces({ MediaType.APPLICATION_JSON })
-	int registerAccount(@QueryParam("firstname") String firstname, @QueryParam("lastname") String lastname, @QueryParam("username") String username, 
+	String registerAccount(@QueryParam("firstname") String firstname, @QueryParam("lastname") String lastname, @QueryParam("username") String username, 
 			@QueryParam("password") String password, @QueryParam("age") int age, @QueryParam("gender") String gender, @QueryParam("address") String address) throws ClassNotFoundException;
 	
 	@POST

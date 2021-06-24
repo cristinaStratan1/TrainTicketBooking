@@ -32,10 +32,9 @@ public class AccountImpl implements Account {
 
 		ResultSet result = statement.executeQuery();
 
-		AccountModel account = null;
+		AccountModel account = 	new AccountModel();
 
 		if (result.next()) {
-			account = new AccountModel();
 			account.setId(Integer.parseInt(result.getString("id")));
 			account.setFirstname(result.getString("firstname"));
 			account.setLastname(result.getString("lastname"));
@@ -51,17 +50,18 @@ public class AccountImpl implements Account {
 	}
 
 	@Override
-	public int registerAccount(String firstname, String lastname, String username, String password, int age,String gender,String address) throws ClassNotFoundException {
+	public String registerAccount(String firstname, String lastname, String username, String password, int age,String gender,String address) throws ClassNotFoundException {
 		String INSERT_USERS_SQL = "INSERT INTO user"
 				+ "  (id, firstname, lastname, username, password, age, gender, address, groupid) VALUES "
 				+ " (?, ?, ?, ?, ?, ?, ?, ?,2);";
 
 		int result = 0;
+		String response = "failure";
 
 		Class.forName("com.mysql.jdbc.Driver");
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_ticket_booking", "train",
-				"train");
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_ticket_booking?serverTimezone=UTC", "root",
+				"MyNewPass");
 
 				// Step 2:Create a statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
@@ -86,13 +86,16 @@ public class AccountImpl implements Account {
 
 			// Step 3: Execute the query or update query
 			result = preparedStatement.executeUpdate();
+			 if (result > 0) {
+		            response = ("success");
+		        }
 			System.out.println(preparedStatement);
 
 		} catch (SQLException e) {
 			// process sql exception
 			printSQLException(e);
 		}
-		return result;
+		return response;
 	}
 	
     //method for seeing booked tickets active and non active, made through wsdl and cxf?
