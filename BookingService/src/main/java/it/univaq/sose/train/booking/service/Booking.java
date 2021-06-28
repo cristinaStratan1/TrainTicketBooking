@@ -17,12 +17,15 @@ public interface Booking {
 	List<RouteModel> getRoutes(String from, String to, String time);
 	
 	@WebMethod
-	boolean setBooking (int userId, int ticketId, String seat, String status);
+	boolean setBooking (int userId, int ticketId, String seat);
 	
 	@WebMethod
 	List<BookingModel> getUserBooking(int userId) throws SQLException_Exception;
 	
 	@WebMethod 
 	List<TicketModel> getTicketsByItinerary(int itineraryId);
+	
+	@WebMethod
+	boolean bookingPayment(int bookingId, String firstanme, String lastname, int cvc, String expiryDate, long cardNumber);
 
 }

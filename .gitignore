@@ -63,3 +63,6 @@ AccountService/target/classes/it/univaq/sose/train/account/AccountImpl.class
 AccountService/target/classes/it/univaq/sose/train/account/Account.class
 AccountService/target/classes/booking.wsdl
 Servers/Tomcat v8.5 Server at localhost-config/server.xml
+AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
+AccountService/target/m2e-wtp/web-resources/META-INF/maven/AccountService/AccountService/pom.properties
+Servers/Tomcat v8.5 Server at localhost-config/server.xml

@@ -73,8 +73,8 @@ public class TicketImpl implements Ticket {
 	}
 
 	@Override
-	public boolean setTicketPayed(int userId, int ticketId) {
-		return BookingDAO.setTicketPayed(userId, ticketId);
+	public boolean setTicketPayed(int bookingId) {
+		return BookingDAO.setTicketPayed(bookingId);
 	}
 
 }

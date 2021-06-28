@@ -92,7 +92,6 @@
   <xs:complexType name="setTicketPayed">
     <xs:sequence>
       <xs:element name="arg0" type="xs:int"/>
-      <xs:element name="arg1" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="setTicketPayedResponse">

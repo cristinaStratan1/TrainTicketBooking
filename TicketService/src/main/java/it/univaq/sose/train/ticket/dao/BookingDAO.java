@@ -46,7 +46,7 @@ public class BookingDAO {
 		return insert;
 	}
 	
-	public static boolean setTicketPayed (int userId, int ticketId) {
+	public static boolean setTicketPayed (int bookingId) {
 		
 		boolean update = true;
 		
@@ -54,12 +54,11 @@ public class BookingDAO {
 			
 			Connection connection = DatabaseConnector.connessioneDB();
 			
-			PreparedStatement updateTicketStatus = connection.prepareStatement("UPDATE usertickets SET status=? WHERE iduser=? AND idticket=?");
-			updateTicketStatus.setString(1, "DONE");
-			updateTicketStatus.setInt(2, userId);
-			updateTicketStatus.setInt(3, ticketId);
+			PreparedStatement updateTicketStatus = connection.prepareStatement("UPDATE usertickets SET status=? WHERE id=?");
+			updateTicketStatus.setString(1, "PAYED");
+			updateTicketStatus.setInt(2, bookingId);
 			
-			update = updateTicketStatus.execute();
+			updateTicketStatus.execute();
 			
 			updateTicketStatus.close();
 			connection.close();

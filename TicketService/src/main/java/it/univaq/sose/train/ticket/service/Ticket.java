@@ -40,5 +40,5 @@ public interface Ticket {
 	public List<TicketModel> getTicketsByItinerary (int itineraryId);
 	
 	@WebMethod
-	boolean setTicketPayed(int userId, int ticketId);
+	boolean setTicketPayed(int bookingId);
 }

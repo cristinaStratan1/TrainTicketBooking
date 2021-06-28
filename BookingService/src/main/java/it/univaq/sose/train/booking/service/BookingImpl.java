@@ -30,8 +30,8 @@ public class BookingImpl implements Booking {
 	}
 
 	@Override
-	public boolean setBooking(int userId, int ticketId, String seat, String status) {
-		return BookingController.setBooking(userId, ticketId, seat, status);
+	public boolean setBooking(int userId, int ticketId, String seat) {
+		return BookingController.setBooking(userId, ticketId, seat);
 	}
 
 	@Override
@@ -42,6 +42,11 @@ public class BookingImpl implements Booking {
 	@Override
 	public List<TicketModel> getTicketsByItinerary(int itineraryId) {
 		return BookingController.getTicketsByItineraryId(itineraryId);
+	}
+
+	@Override
+	public boolean bookingPayment(int bookingId, String firstanme, String lastname, int cvc, String expiryDate, long cardNumber) {
+		return BookingController.bookingPayment(bookingId, firstanme, lastname, cvc, expiryDate, cardNumber);
 	}
 
 }
