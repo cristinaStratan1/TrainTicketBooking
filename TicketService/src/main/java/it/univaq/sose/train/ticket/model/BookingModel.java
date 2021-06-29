@@ -1,5 +1,7 @@
 package it.univaq.sose.train.ticket.model;
 
+import java.time.LocalTime;
+
 public class BookingModel {
 	
 	private int bookingId;
@@ -12,17 +14,20 @@ public class BookingModel {
 	
 	private String status;
 	
+	private LocalTime bookingDate;
+	
 	public BookingModel() {
 		super();
 	}
 
-	public BookingModel(int bookingId, int userId, TicketModel ticket, String seat, String status) {
+	public BookingModel(int bookingId, int userId, TicketModel ticket, String seat, String status, LocalTime bookingDate) {
 		super();
 		this.bookingId = bookingId;
 		this.userId = userId;
 		this.ticket = ticket;
 		this.seat = seat;
 		this.status = status;
+		this.bookingDate = bookingDate;
 	}
 
 	public int getBookingId() {
@@ -63,6 +68,14 @@ public class BookingModel {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public LocalTime getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(LocalTime bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
 }
