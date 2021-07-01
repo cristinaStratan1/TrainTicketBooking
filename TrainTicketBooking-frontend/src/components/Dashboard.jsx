@@ -8,22 +8,28 @@ import axios from "axios";
 export default class Dashboard extends Component {
     constructor(props) {
         super(props)
-        this.getData();
 
         this.state = {
 
         }
+        this.getData();
     }
 
     getData = () => {
-        axios.get("https://randomuser.me/api/")
-            // .then(response => response.json())
-            .then(response => {
-                console.log("response: ", response);
-            })
-            .catch(errors => {
-                console.log("errors: ", errors);
-            })
+        const config = {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+            }
+        };
+        // axios.post("http://localhost:9090/users/getAll", config)
+        //     // .then(response => response.json())
+        //     .then(response => {
+        //         console.log("response: ", response);
+        //     })
+        //     .catch(errors => {
+        //         console.log("errors: ", errors);
+        //     })
     }
 
 

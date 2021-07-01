@@ -92,6 +92,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+const RegistrationPage = () => {
+    return (
+        <h1>registration Page called</h1>
+    )
+}
+
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -141,7 +148,7 @@ export default function PrimarySearchAppBar() {
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
 
-    const changeDisplayLogin = () => {
+    const changeDisplayLogin = event => {
         // event.preventDefault();
         setLoginPage(!isLoginPage);
     }
@@ -168,6 +175,8 @@ export default function PrimarySearchAppBar() {
                         >
                             <DialogTitle id="alert-dialog-title">{isLoginPage ? "Login to L’Aquila Railways" : "Sign up to L’Aquila Railways"}</DialogTitle>
                             <DialogContent>
+                                {/* <Login /> */}
+                                {/* <Registration /> */}
                                 {
                                     isLoginPage ? <Login /> : <Registration />
                                 }

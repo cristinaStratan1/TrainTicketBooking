@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Form, Button, Icon, Message } from 'semantic-ui-react'
+import { Form, Button, Icon, Message, Checkbox, Grid, Step, Modal } from 'semantic-ui-react'
 import Typography from '@material-ui/core/Typography';
 import CustonDropdown from '../Common/CustomDropdown';
 import CustomDateTime from '../Common/CustomDateTime';
+import TrainsListStepper from '../TrainsListStepper';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default class RightPartion extends Component {
     constructor(props) {
@@ -12,6 +19,11 @@ export default class RightPartion extends Component {
             startDateTime: '',
             endDateTime: '',
             // minDateTime: new Date().toLocaleString(),
+            isRoundTrip: false,
+            showTrainsList: false,
+            isPopupOpen: false,
+            successfulTicketBooked: {},
+            isSnackbarOpen: false,
         }
     }
 
@@ -24,6 +36,22 @@ export default class RightPartion extends Component {
         console.log("name: ", name, " value: ", value, " event: ", event);
         this.setState({ endDateTime: value });
     }
+
+    toggleRoundTrip = () => {
+        this.setState((prevState) => ({ isRoundTrip: !prevState.isRoundTrip }))
+        console.log("Value: ", this.state.isRoundTrip);
+    }
+
+    ticketBookedSuccessChildCallback = message => {
+        console.log("response in super parent: ", message);
+        this.setState({
+            successfulTicketBooked: message,
+            isPopupOpen: false,
+            isSnackbarOpen: true
+        });
+    }
+
+    handleSnackbarClose = () => this.setState({ isSnackbarOpen: false });
 
     render() {
         const countryOptions = [
@@ -67,66 +95,90 @@ export default class RightPartion extends Component {
             { key: 'seniorCitizen', value: 'seniorCitizen', text: 'Senior Citizen' },
             { key: 'premium', value: 'premium', text: 'Premium' }
         ];
+
+        const handleSearch = () => {
+            this.setState({ showTrainsList: !this.state.showTrainsList });
+        }
         return (
-            <div className="form-container" style={{
-                height: '29.25rem',
-                border: '2px solid #222',
-                borderRadius: '8px',
-                margin: '10px',
-                padding: '15px',
-                width: '40rem',
-                position: 'absolute',
-                top: '16%',
-                right: '5%',
-                backgroundColor: '#fff',
-                opacity: '0.95',
-            }}>
-                <Form>
-                    <Form.Group widths='equal'>
-                        <CustonDropdown
-                            options={countryOptions}
-                            search={true}
-                            label='Source'
-                            required={true}
-                            // loading={true}
-                            placeholder='Select Source'
-                            scrolling={true}
-                            id='source'
-                            clearable={true}
-                        />
-                        <CustonDropdown
-                            options={countryOptions}
-                            search={true}
-                            label='Destination'
-                            required={true}
-                            // loading={true}
-                            placeholder='Select Destination'
-                            scrolling={true}
-                            id='destination'
-                            clearable={true}
-                        />
-                    </Form.Group>
-                    <Form.Group widths='equal'>
-                        <CustomDateTime
-                            name='dateTime'
-                            placeholder="Start date & time"
-                            value={this.state.startDateTime}
-                            onChange={this.handleStartDateTimeChange}
-                            label='Departure Date'
-                            required={true}
-                            clearable={true}
-                        />
-                        <CustomDateTime
-                            name='dateTime'
-                            placeholder="End date & time"
-                            value={this.state.endDateTime}
-                            onChange={this.handleEndDateTimeChange}
-                            label='Return Date'
-                            required={true}
-                            clearable={true}
-                        />
-                    </Form.Group>
-                    <Form.Group widths='equal'>
+            <div>
+                {/* {this.state.showTrainsList ? (<TrainsList isModalOpen={this.state.showTrainsList} />) : null} */}
+                <div className="snackbar">
+                    <Snackbar open={this.state.isSnackbarOpen} autoHideDuration={5000} onClose={this.handleSnackbarClose}>
+                        <Alert onClose={this.handleSnackbarClose}
+                            severity="success">
+                            {this.state.successfulTicketBooked}
+                        </Alert>
+                    </Snackbar>
+                </div>
+                <div className="form-container" style={{
+                    height: '24rem',
+                    border: '2px solid #222',
+                    borderRadius: '8px',
+                    margin: '10px',
+                    padding: '15px',
+                    width: '40rem',
+                    position: 'absolute',
+                    top: '22%',
+                    right: '5%',
+                    backgroundColor: '#fff',
+                    opacity: '0.95',
+                }}>
+                    <Form>
+                        <Form.Group widths='equal'>
+                            <CustonDropdown
+                                options={countryOptions}
+                                search={true}
+                                label='Source'
+                                // required={true}
+                                // loading={true}
+                                placeholder='Select Source'
+                                scrolling={true}
+                                id='source'
+                                clearable={true}
+                            />
+                            <CustonDropdown
+                                options={countryOptions}
+                                search={true}
+                                label='Destination'
+                                // required={true}
+                                // loading={true}
+                                placeholder='Select Destination'
+                                scrolling={true}
+                                id='destination'
+                                clearable={true}
+                            />
+                        </Form.Group>
+                        <Form.Group widths='equal'>
+                            <CustomDateTime
+                                name='dateTime'
+                                placeholder="Start date & time"
+                                value={this.state.startDateTime}
+                                onChange={this.handleStartDateTimeChange}
+                                label='Departure Date'
+                                // required={true}
+                                clearable={true}
+                            />
+                            {
+                                this.state.isRoundTrip
+                                    ? <CustomDateTime
+                                        name='dateTime'
+                                        placeholder="End date & time"
+                                        value={this.state.endDateTime}
+                                        onChange={this.handleEndDateTimeChange}
+                                        label='Return Date'
+                                        // required={true}
+                                        clearable={true}
+                                    />
+                                    : null
+                            }
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Checkbox label={< label ><b> Round Trip</b></label>}
+                                toggle={true}
+                                onChange={this.toggleRoundTrip}
+                                checked={this.state.isRoundTrip} />
+                        </Form.Group>
+                        {/* <Form.Group widths='equal'>
                         <CustonDropdown
                             options={classOptions}
                             search={false}
@@ -147,20 +199,48 @@ export default class RightPartion extends Component {
                             scrolling={false}
                             id='ticket-type'
                         />
-                    </Form.Group>
-                    <Form.Group>
+                    </Form.Group> */}
+                        {/* <Form.Group>
                         <Form.Checkbox label='Flexible with Date' />
                         <Form.Checkbox label='Train with Available Berth' />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Button floated='left'> <Icon name='search' />Search</Form.Button>
-                    </Form.Group>
-                </Form>
-                <Message attached='bottom' warning>
-                    <Icon name='help' />
-                    Automatic refund of full train fare in case of train cancellation by railways. No need to cancel such tickets.
-                </Message>
-            </div >
+                    </Form.Group> */}
+                        <Form.Group>
+
+                            <Modal
+                                onClose={() => this.setState({ isPopupOpen: false })}
+                                onOpen={() => this.setState({ isPopupOpen: true })}
+                                open={this.state.isPopupOpen}
+                                closeIcon
+                                centered={true}
+                                // adjusting the modal
+                                style={{
+                                    height: 'auto',
+                                    // minHeight: '60vh',
+                                    // maxWidth: '180vh',
+                                    width: '170vh',
+                                    top: 'auto',
+                                    left: 'auto',
+                                    // bottom: 'auto',
+                                    right: 'auto'
+                                }}
+                                trigger={
+                                    <Form.Button floated='left' onClick={handleSearch}> <Icon name='search' />Search</Form.Button>
+                                }>
+
+                                <Modal.Header>L’Aquila Railways Ticket Booking</Modal.Header>
+                                <Modal.Content style={{ padding: 0 }}>
+                                    <TrainsListStepper ticketBookedMessage={this.ticketBookedSuccessChildCallback}></TrainsListStepper>
+                                </Modal.Content>
+                            </Modal>
+                        </Form.Group>
+
+                    </Form>
+                    <Message attached='bottom' warning>
+                        <Icon name='help' />
+                        Automatic refund of full train fare in case of train cancellation by railways. No need to cancel such tickets.
+                    </Message>
+                </div >
+            </div>
         )
     }
 }
