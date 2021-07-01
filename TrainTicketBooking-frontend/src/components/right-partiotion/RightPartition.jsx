@@ -129,7 +129,7 @@ export default class RightPartion extends Component {
                                 options={countryOptions}
                                 search={true}
                                 label='Source'
-                                // required={true}
+                                required={true}
                                 // loading={true}
                                 placeholder='Select Source'
                                 scrolling={true}
@@ -140,7 +140,7 @@ export default class RightPartion extends Component {
                                 options={countryOptions}
                                 search={true}
                                 label='Destination'
-                                // required={true}
+                                required={true}
                                 // loading={true}
                                 placeholder='Select Destination'
                                 scrolling={true}
@@ -155,7 +155,7 @@ export default class RightPartion extends Component {
                                 value={this.state.startDateTime}
                                 onChange={this.handleStartDateTimeChange}
                                 label='Departure Date'
-                                // required={true}
+                                required={true}
                                 clearable={true}
                             />
                             {
@@ -166,7 +166,7 @@ export default class RightPartion extends Component {
                                         value={this.state.endDateTime}
                                         onChange={this.handleEndDateTimeChange}
                                         label='Return Date'
-                                        // required={true}
+                                        required={true}
                                         clearable={true}
                                     />
                                     : null

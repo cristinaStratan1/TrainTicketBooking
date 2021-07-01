@@ -96,15 +96,15 @@ export default class UserDetails extends Component {
         }
         return (
             <div style={{ margin: '0', padding: '5px 1rem', paddingBottom: '1rem', maxHeight: '150vh', overflowY: 'scroll' }}>
-                <Form>
+                <Form onSubmit={handleUserFormSubmit}>
                     <Form.Group widths='equal'>
                         <Form.Field width='100%'>
                             <label>First Name</label>
-                            <input placeholder='First Name' name='firstName' onChange={handleInputChange} />
+                            <input required={true} placeholder='First Name' name='firstName' onChange={handleInputChange} />
                         </Form.Field>
                         <Form.Field width='100%'>
                             <label>Last Name</label>
-                            <input placeholder='Last Name' name='lastName' onChange={handleInputChange} />
+                            <input required={true} placeholder='Last Name' name='lastName' onChange={handleInputChange} />
                         </Form.Field>
                     </Form.Group>
                     <Form.Group widths='equal'>
@@ -112,7 +112,7 @@ export default class UserDetails extends Component {
                             options={genderOptions}
                             search={false}
                             label='Gender'
-                            // required={true}
+                            required={true}
                             // loading={true}
                             placeholder='Select Gender'
                             scrolling={false}
@@ -128,7 +128,7 @@ export default class UserDetails extends Component {
                             options={ticketsOptions}
                             search={false}
                             label='Number of Tickets'
-                            // required={true}
+                            required={true}
                             // loading={true}
                             placeholder='Tickets'
                             scrolling={false}
@@ -138,7 +138,7 @@ export default class UserDetails extends Component {
                             defaultValue={ticketsOptions[0].value}
                         />
                     </Form.Group>
-                    <Form.TextArea label='Address' placeholder='Enter destination Address...' name='address' onChange={handleInputChange} />
+                    <Form.TextArea label='Address' required={true} placeholder='Enter destination Address...' name='address' onChange={handleInputChange} />
                     <Form.Field style={{
                         display: 'block',
                         padding: '0.5em',
@@ -148,10 +148,10 @@ export default class UserDetails extends Component {
                         <p style={{
                             maxHeight: '50px',
                             overflowY: 'scroll',
-                        }}>ons relating to the liability of the Indian Railways to the customer in respect of loss or damage caused by the delay/diversion/termination short of destination and/or cancellation of any train, any missed connection, or closure of the Railway.
-                            The IRCTC provides only the facility of interacting with the Indian Railway's PRS system through the Internet. The IRCTC is not responsible for providing train services or any other service through this site.
+                        }}>ons relating to the liability of the L'Aquila Railways to the customer in respect of loss or damage caused by the delay/diversion/termination short of destination and/or cancellation of any train, any missed connection, or closure of the Railway.
+                            The IRCTC provides only the facility of interacting with the L'Aquila Railway's PRS system through the Internet. The IRCTC is not responsible for providing train services or any other service through this site.
                             Governing Law:
-                            Indian Law and the courts of New Delhi, India govern This Agreement and your use of the web site. You hereby irrevocably consent to the exclusive jurisdiction and venue of courts in New Delhi, India in all disputes arising out of or relating to the use of the IRCTC Sites/Services. Use of the IRCTC Sites/Services is unauthorized in any jurisdiction that does not give effect to all provisions of these terms and conditions, including without limitation this paragraph.
+                            L'Aquila Law and the courts of New Delhi, italy govern This Agreement and your use of the web site. You hereby irrevocably consent to the exclusive jurisdiction and venue of courts in New Delhi, italy in all disputes arising out of or relating to the use of the IRCTC Sites/Services. Use of the IRCTC Sites/Services is unauthorized in any jurisdiction that does not give effect to all provisions of these terms and conditions, including without limitation this paragraph.
                             Entire Agreement: This Agreement including any document referred to herein constitute the entire agreement between us and you in respect of your use of this service.
                             Third Party Rights: Nothing in this Agreement shall be taken as granting any rights expressly or implicitly whether contractual or statutory to persons other than you or us.
                             Website Contents: All content and software (if any) that is made available to view and/or download in connection with the IRCTC Sites/Services, excluding content and/or software that may be made available by end-users through a Communication Service, ("Software") is owned by and is the copyrighted work of IRCTC and/or its suppliers and is protected by copyright laws and international treaty provisions. Your use of the Software is governed by the terms of the end user license agreement, if any, which accompanies or is included with the Software ("License Agreement").
@@ -162,7 +162,7 @@ export default class UserDetails extends Component {
                             No partnership: Nothing in this Agreement shall operate so as to create a partnership, joint venture, an agency relationship or employment of any kind between you and us.
                             All rights not expressly granted herein are reserved.
                             Disclaimer
-                            Indian Railways and IRCTC are not responsible for wrong booking due to incorrect details furnished by the customer.
+                            L'Aquila Railways and IRCTC are not responsible for wrong booking due to incorrect details furnished by the customer.
                             Advertising Material: Parts of the Site contain advertising/other material submitted to www.irctc.co.in by third parties. Responsibility for ensuring that material submitted for inclusion on the Site complies with applicable International and National law is exclusively on the advertisers and IRCTC will not be responsible for any claim, error, omission or inaccuracy in advertising material.
                             Link to other sites: www.irctc.co.in may contain images of and links to third party Web sites ("Linked Sites"). The Linked Sites are not under the control of IRCTC and IRCTC is not responsible for the contents of any Linked Site, including without limitation any link contained in a Linked Site, or any changes or updates to a Linked Site. IRCTC is not responsible for web casting or any other form of transmission received from any Linked Site nor is IRCTC responsible if the Linked Site is not working appropriately. IRCTC is providing these links to you only as a convenience or value addition, and the inclusion of any link does not imply endorsement by IRCTC of the site or any association with its operators. The visitor is responsible for viewing and abiding by the privacy statements and terms of use posted at the Linked Sites.
                             Promotions: IRCTC does not endorse or guarantee on quality of any goods and services that are being promoted by the vendors of such goods and services through the medium of www.irctc.co.in Any transactions with third parties including advertisers on this website or participation in promotions, including the delivery of and the payment for goods and services, and any other terms, conditions, warranties or representations associated with such dealings or promotions, are solely between you and the advertiser or other third party. IRCTC shall not be responsible or liable for any part of any such dealings or promotions.
@@ -174,10 +174,10 @@ export default class UserDetails extends Component {
                             Links to Other Sites: People over whom IRCTC exercises no control, develop the sites linked to www.irctc.co.in. Other parties, such as those advertising on our pages or those advertising thorough our envelopes carrying tickets are also in no way under the control or influence of IRCTC. These other sites /parties may send their own cookies / messages to users, collect data, or solicit personal information. Our users may give such information or data only at their personal discretion.
                             With Whom Does IRCTC Share Information? : IRCTC will not share your personal data with advertisers, business partners, sponsors, and other third parties without your express consent. However, we may divulge aggregate information about our users. For example, we may disclose how frequently the average user visits www.irctc.co.in, or the age distribution of our aggregate customer set or the frequency of use of PNR enquiry page etc. etc. Please be aware, however, that we will release specific personal information about you if required to do so in order to comply with any valid legal process such as a search warrant, court order etc.
                             Your consent and changes to the Privacy Policy By using the www.irctc.co.in, you consent to the collection and use of your information as we have outlined in this policy and to our Terms & Conditions. IRCTC may decide to change this Privacy Policy from time to time. When we do, we will post those changes on this page so that you are always aware of the information we collect, how we use it, and under what circumstances we disclose it.</p>
-                        <Checkbox label='I agree to the Terms and Conditions' />
+                        <Checkbox label='I agree to the Terms and Conditions' required={true}/>
                     </Form.Field>
                     <Button positive floated="left" onClick={handleBackClick} value="booking">Back</Button>
-                    <Button type='submit' color='primary' floated='right' onClick={handleUserFormSubmit}>Total Amount: ${this.props.selectedTrainFare * this.state.userForm.passengerCount}</Button>
+                    <Button type='submit' color='primary' floated='right' >Total Amount: ${this.props.selectedTrainFare * this.state.userForm.passengerCount}</Button>
                 </Form>
             </div >
         )
