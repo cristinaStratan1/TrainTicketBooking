@@ -45,6 +45,7 @@
     <xs:sequence>
       <xs:element name="capacity" type="xs:int"/>
       <xs:element name="trainId" type="xs:int"/>
+      <xs:element minOccurs="0" name="trainName" type="xs:string"/>
       <xs:element name="trainNo" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
@@ -70,6 +71,7 @@
   </xs:complexType>
   <xs:complexType name="bookingModel">
     <xs:sequence>
+      <xs:element minOccurs="0" name="bookingDate" type="xs:string"/>
       <xs:element name="bookingId" type="xs:int"/>
       <xs:element minOccurs="0" name="seat" type="xs:string"/>
       <xs:element minOccurs="0" name="status" type="xs:string"/>

@@ -23,7 +23,7 @@ public class TrainDAO {
 			ResultSet resObj = sTrainById.executeQuery();
 			
 			while (resObj.next()) {
-				train = new TrainModel(resObj.getInt("id"), resObj.getInt("trainNo"), resObj.getInt("capacity"));
+				train = new TrainModel(resObj.getInt("id"), resObj.getInt("trainNo"), resObj.getString("trainName"), resObj.getInt("capacity"));
 			}
 			
 			resObj.close();

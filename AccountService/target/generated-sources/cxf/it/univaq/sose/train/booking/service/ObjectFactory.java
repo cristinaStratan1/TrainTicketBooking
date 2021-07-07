@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _BookingPayment_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "bookingPayment");
+    private final static QName _BookingPaymentResponse_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "bookingPaymentResponse");
     private final static QName _GetRoutes_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getRoutes");
     private final static QName _GetRoutesResponse_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getRoutesResponse");
     private final static QName _GetTicketsByItinerary_QNAME = new QName("http://service.booking.train.sose.univaq.it/", "getTicketsByItinerary");
@@ -38,6 +40,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link BookingPayment }
+     * 
+     */
+    public BookingPayment createBookingPayment() {
+        return new BookingPayment();
+    }
+
+    /**
+     * Create an instance of {@link BookingPaymentResponse }
+     * 
+     */
+    public BookingPaymentResponse createBookingPaymentResponse() {
+        return new BookingPaymentResponse();
     }
 
     /**
@@ -110,6 +128,32 @@ public class ObjectFactory {
      */
     public RouteModel createRouteModel() {
         return new RouteModel();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BookingPayment }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BookingPayment }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://service.booking.train.sose.univaq.it/", name = "bookingPayment")
+    public JAXBElement<BookingPayment> createBookingPayment(BookingPayment value) {
+        return new JAXBElement<BookingPayment>(_BookingPayment_QNAME, BookingPayment.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BookingPaymentResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BookingPaymentResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://service.booking.train.sose.univaq.it/", name = "bookingPaymentResponse")
+    public JAXBElement<BookingPaymentResponse> createBookingPaymentResponse(BookingPaymentResponse value) {
+        return new JAXBElement<BookingPaymentResponse>(_BookingPaymentResponse_QNAME, BookingPaymentResponse.class, null, value);
     }
 
     /**

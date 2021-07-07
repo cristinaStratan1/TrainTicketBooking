@@ -39,6 +39,7 @@
     <xs:sequence>
       <xs:element name="capacity" type="xs:int"/>
       <xs:element name="trainId" type="xs:int"/>
+      <xs:element minOccurs="0" name="trainName" type="xs:string"/>
       <xs:element name="trainNo" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>

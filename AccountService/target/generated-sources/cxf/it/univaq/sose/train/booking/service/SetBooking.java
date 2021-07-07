@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,15 +31,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "setBooking", propOrder = {
     "arg0",
     "arg1",
-    "arg2",
-    "arg3"
+    "arg2"
 })
 public class SetBooking {
 
     protected int arg0;
     protected int arg1;
     protected String arg2;
-    protected String arg3;
 
     /**
      * Recupera il valore della proprietà arg0.
@@ -96,30 +93,6 @@ public class SetBooking {
      */
     public void setArg2(String value) {
         this.arg2 = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà arg3.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getArg3() {
-        return arg3;
-    }
-
-    /**
-     * Imposta il valore della proprietà arg3.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setArg3(String value) {
-        this.arg3 = value;
     }
 
 }

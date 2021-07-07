@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="capacity" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="trainId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="trainName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="trainNo" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -31,12 +32,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "trainModel", propOrder = {
     "capacity",
     "trainId",
+    "trainName",
     "trainNo"
 })
 public class TrainModel {
 
     protected int capacity;
     protected int trainId;
+    protected String trainName;
     protected int trainNo;
 
     /**
@@ -69,6 +72,30 @@ public class TrainModel {
      */
     public void setTrainId(int value) {
         this.trainId = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà trainName.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTrainName() {
+        return trainName;
+    }
+
+    /**
+     * Imposta il valore della proprietà trainName.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTrainName(String value) {
+        this.trainName = value;
     }
 
     /**

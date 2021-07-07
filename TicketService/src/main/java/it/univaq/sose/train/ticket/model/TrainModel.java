@@ -5,13 +5,16 @@ public class TrainModel {
 	private int trainId;
 
 	private int trainNo;
+	
+	private String trainName;
 
 	private int capacity;
 
-	public TrainModel(int trainId, int trainNo, int capacity) {
+	public TrainModel(int trainId, int trainNo, String trainName, int capacity) {
 		super();
 		this.trainId = trainId;
 		this.trainNo = trainNo;
+		this.setTrainName(trainName);
 		this.capacity = capacity;
 	}
 
@@ -29,6 +32,14 @@ public class TrainModel {
 
 	public void setTrainNo(int trainNo) {
 		this.trainNo = trainNo;
+	}
+
+	public String getTrainName() {
+		return trainName;
+	}
+
+	public void setTrainName(String trainName) {
+		this.trainName = trainName;
 	}
 
 	public int getCapacity() {
