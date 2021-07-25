@@ -49,11 +49,6 @@ public class TicketImpl implements Ticket {
 		
 		new Thread() {
 			public void run() {
-				/*try {
-					Thread.sleep(10000); // 10s
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}*/
 				
 				TrainAvailabilityModel response = new TrainAvailabilityModel();
 				response.setTrainAvailability(TicketController.getAvailability(from, to, time));

@@ -87,11 +87,10 @@ public class TicketDAO {
 			while (resObj.next()) {
 				booked = resObj.getInt("booked");
 			}
-			
 			resObj.close();
 			getAvailabilityById.close();
-			connection.close();			
-		
+			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

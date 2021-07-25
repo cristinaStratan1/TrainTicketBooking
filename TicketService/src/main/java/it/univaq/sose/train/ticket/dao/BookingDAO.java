@@ -99,7 +99,7 @@ public class BookingDAO {
 			booking.setTicket(TicketController.getTicket(result.getInt("idticket")));
 			booking.setSeat(result.getString("seat"));
 			booking.setStatus(result.getString("status"));
-			booking.setBookingDate(result.getTimestamp("bookingDate").toLocalDateTime().toLocalTime());
+			booking.setBookingDate(result.getTimestamp("bookDate").toLocalDateTime().toLocalTime());
 			
 			tickets.add(booking);
 		}

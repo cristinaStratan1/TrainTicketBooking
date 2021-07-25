@@ -12,7 +12,6 @@ import it.univaq.sose.train.booking.service.TrainAvailabilityAsyncHandler;
 import it.univaq.sose.train.schedule.service.ItineraryModel;
 import it.univaq.sose.train.schedule.service.Schedule;
 import it.univaq.sose.train.schedule.service.ScheduleImplService;
-import it.univaq.sose.train.schedule.service.TrainModel;
 import it.univaq.sose.train.ticket.service.GetAvailability;
 import it.univaq.sose.train.ticket.service.Ticket;
 import it.univaq.sose.train.ticket.service.TicketImplService;
@@ -74,20 +73,15 @@ public class RouteController {
 		
 		TrainAvailabilityModel availabilities = trainAvailabilitySyncHandler.getResponse();
 		System.out.println(availabilities.getTrainAvailability().getEntry().isEmpty());
-
-		//TrainAvailabilityModel availabilities = getAvailabilities(from, to, time);
-		//List<ItineraryModel> itineraries = getItineraries(from, to, time);
 		
 		List<RouteModel> routes = new ArrayList<>();
 		
 		itineraries.forEach( itinerary -> {
 			
-			TrainModel train = itinerary.getTrain();
-			
 			Map<Integer,Integer> availabilitiesMap = availabilities.getTrainAvailability().getEntry().stream()
 					.collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue(), (a,b) -> a, () -> new LinkedHashMap<>()));
 			
-			int availability = availabilitiesMap.get(train.getTrainId());
+			int availability = availabilitiesMap.get(itinerary.getItineraryId());
 			routes.add(new RouteModel(itinerary, availability));
 		});
 		

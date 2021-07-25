@@ -44,7 +44,7 @@ public class TicketController {
 			TrainModel train = itinerary.getTrain();
 			int booked = TicketDAO.getBookingByItineraryId(itinerary.getItineraryId());
 			int availability = train.getCapacity()-booked;
-			trainsAvailability.put(train.getTrainId(), availability);
+			trainsAvailability.put(itinerary.getItineraryId(), availability);
 		}
 
 		return trainsAvailability;
